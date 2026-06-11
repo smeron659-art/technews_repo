@@ -1,20 +1,28 @@
-import React from 'react';
-import { StyleSheet,Text,View } from 'react-native';
-import {day,month,dateNo}  from  '../utils/today';
-import useTheam from '../store/useTheam';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { day, month, dateNo } from "../utils/today";
+import useTheam from "../store/useTheam";
 
 const Date = () => {
-     const { color,fSize}=useTheam();
-    return (
-        <View>
-<Text style={[styles.text]}>  {day}, {month} ,{dateNo}</Text>
-        </View>
-    );
-}
-const createStyle=(color,fSize)=>StyleSheet.create({
-text:{
-    color:color.textSecondary,
-    fontSizes:fSize.tag,
-}})
+  const { color, fSize } = useTheam();
 
-export default Date;
+  const styles = createStyle(color, fSize);
+
+  return (
+    <View>
+      <Text style={styles.text}>
+        {day}, {month}, {dateNo}
+      </Text>
+    </View>
+  );
+};
+
+const createStyle = (color, fSize) =>
+  StyleSheet.create({
+    text: {
+      color: color.textSecondary,
+      fontSize: fSize.tag, // ✅ fixed
+    },
+  });
+
+export default Date; 

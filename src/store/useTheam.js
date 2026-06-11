@@ -1,21 +1,27 @@
 import { create } from "zustand";
 import themes from "../utils/color";
-import fsConstraint, { Spacing } from "../utils/spacing";
+import fsConstraint from "../utils/spacing";
 
- const useTheam = create((set)=>{
-    return{
-         theamMode:'light',
-         Color:themes.light,
-         fSize:fsConstraint.fontsize,
-         spacing:fsConstraint.spacing,
-         toggleTheam: () =>set((currentMode) =>{
-            if(currentMode.theamMode==='dark'){
-                return{theamMode:'light',color : themes.light};}
-                else{
-                    return{theamMode:'dark',color : themes.dark};
-                }
-            
-         })
-        }
- });
- export default useTheam;
+const useTheme = create((set) => ({
+  themeMode: "light",
+  color: themes.light,
+  fSize: fsConstraint.fontsize,
+  spacing: fsConstraint.spacing,
+
+  toggleTheme: () =>
+    set((state) => {
+      if (state.themeMode === "dark") {
+        return {
+          themeMode: "light",
+          color: themes.light,
+        };
+      } else {
+        return {
+          themeMode: "dark",
+          color: themes.dark,
+        };
+      }
+    }),
+}));
+
+export default useTheme;

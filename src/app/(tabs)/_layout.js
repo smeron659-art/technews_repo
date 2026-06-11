@@ -1,10 +1,11 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SystemBars } from "react-native-edge-to-edge";
-import  useTheam  from "../../store/useTheam";
+import useTheam from "../../store/useTheam";
 
 export default function Layout() {
-const {color}= useTheam();
+  const { color } = useTheam();
+
   return (
     <>
       <SystemBars style="auto" />
@@ -14,8 +15,8 @@ const {color}= useTheam();
           tabBarStyle: {
             borderTopWidth: 0,
           },
-          tabBarActiveTintColor:color.accentprimary,
-          tabBarInactiveBackgroundColor:color.textMuted,
+          tabBarActiveTintColor: color.primary,
+          tabBarInactiveTintColor: color.textSecondary,
         }}
       >
         <Tabs.Screen
@@ -23,19 +24,19 @@ const {color}= useTheam();
           options={{
             title: "Home",
             headerShown: false,
-            tabBarIcon: ({  color ,focused}) => (
-              <Ionicons name={ focused? 'home':'home-outline'} size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="home-outline" size={24} color={color} />
             ),
           }}
         />
 
         <Tabs.Screen
-          name="catagory"
+          name="category"
           options={{
-            title: "catagory",
+            title: "Category",
             headerShown: false,
-            tabBarIcon: ({  color,focused }) => (
-              <Ionicons name={ focused? 'gride':'gride-outline'}size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="grid-outline" size={24} color={color} />
             ),
           }}
         />
@@ -43,20 +44,21 @@ const {color}= useTheam();
         <Tabs.Screen
           name="favorite"
           options={{
-            title: "favorite",
+            title: "Favorite",
             headerShown: false,
-            tabBarIcon: ({ color,focused}) => (
-              <Ionicons name={ focused? 'timer':'timer-outline'} size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="heart-outline" size={24} color={color} />
             ),
           }}
         />
-         <Tabs.Screen
+
+        <Tabs.Screen
           name="profile"
           options={{
-            title: "profile",
+            title: "Profile",
             headerShown: false,
-            tabBarIcon: ({color,focused }) => (
-              <Ionicons name={ focused? 'person':'person-outline'}size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="person-outline" size={24} color={color} />
             ),
           }}
         />
