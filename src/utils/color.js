@@ -14,7 +14,7 @@
   secondary: "#03DAC6",
 
   // Text colors
-  textPrimary: "rgb(230, 221, 221)",
+  textPrimary: "rgb(210, 195, 195)",
   textSecondary: "#555555",
   textDisabled: "#999999",
 
@@ -47,13 +47,13 @@
   card: "#1E1E1E",
 
   // Primary colors
-  primary: "#BB86FC",
+  primary: "#062b81",
   primaryLight: "#CF9FFF",
   secondary: "#03DAC6",
 
   // Text colors
   textPrimary: "#141313",
-  textSecondary: "#BBBBBB",
+  textSecondary: "#2d2626",
   textDisabled: "#777777",
 
   // Border colors

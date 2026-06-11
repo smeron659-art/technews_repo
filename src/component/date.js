@@ -17,11 +17,12 @@ const Date = () => {
   );
 };
 
-const createStyle = (color, fSize) =>
+const createStyle = (color, fSize,spacing) =>
   StyleSheet.create({
     text: {
       color: color.textSecondary,
       fontSize: fSize.tag, // ✅ fixed
+      marginLeft:spacing.l
     },
   });
 

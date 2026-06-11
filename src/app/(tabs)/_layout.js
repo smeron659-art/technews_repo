@@ -5,11 +5,11 @@ import useTheam from "../../store/useTheam";
 
 export default function Layout() {
   const { color } = useTheam();
-
+    
   return (
     <>
       <SystemBars style="auto" />
-
+ 
       <Tabs
         screenOptions={{
           tabBarStyle: {
@@ -30,17 +30,16 @@ export default function Layout() {
           }}
         />
 
-        <Tabs.Screen
-          name="category"
-          options={{
-            title: "Category",
-            headerShown: false,
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="grid-outline" size={24} color={color} />
-            ),
-          }}
-        />
-
+       <Tabs.Screen
+  name="catagory"
+  options={{
+    title: "Category",
+    headerShown: false,
+    tabBarIcon: ({ color, size }) => (
+      <Ionicons name="apps" size={size} color={color} />
+    ),
+  }}
+/>
         <Tabs.Screen
           name="favorite"
           options={{
@@ -65,4 +64,4 @@ export default function Layout() {
       </Tabs>
     </>
   );
-}
+} 
