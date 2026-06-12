@@ -2,23 +2,27 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import useTheme from '../../store/useTheam';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Header } from '@react-navigation/elements';
+import Header from '../../component/header';
 
 const Catagory = () => {
     const {color,fsize, spacing}=useTheme();
        const  styles=createStyles(color,fsize, spacing)
     return (
         <SafeAreaView style={styles.colorof}>
-        <Header header={'catagory'}/>
+        <Header style={styles.color} header={'catagory'}/>
         </SafeAreaView>
     );
 }
 
 const createStyles= (color,fsize, spacing)=> StyleSheet.create({
   colorof:{
-    backgroundColor:color.backgroundColor,
+    backgroundColor:color.background, 
     flex:1,
-  }
+  },
+   color:{
+  color:color.textPrimary,
+  textAlign:'center',
+  justifyContent:'center'}
 })
 
 export default Catagory;

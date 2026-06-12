@@ -4,9 +4,9 @@ import { day, month, dateNo } from "../utils/today";
 import useTheam from "../store/useTheam";
 
 const Date = () => {
-  const { color, fSize } = useTheam();
+  const { color, fsize,spacing } = useTheam();
 
-  const styles = createStyle(color, fSize);
+  const styles = createStyle(color, fsize,spacing);
 
   return (
     <View>
@@ -17,11 +17,11 @@ const Date = () => {
   );
 };
 
-const createStyle = (color, fSize,spacing) =>
+const createStyle = (color, fsize,spacing) =>
   StyleSheet.create({
     text: {
       color: color.textSecondary,
-      fontSize: fSize.tag, // ✅ fixed
+      fontSize: fsize.tag, // ✅ fixed
       marginLeft:spacing.l
     },
   });

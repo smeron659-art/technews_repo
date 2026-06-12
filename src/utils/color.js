@@ -7,7 +7,7 @@
   background: '#161515',
   surface: '#F5F5F5',
   card: '#FFFFFF',
-
+lowerback:"#0f0101",
   // Primary colors
   primary: "#6200EE",
   primaryLight: "#9D46FF",
@@ -42,9 +42,11 @@
   // StatusBar
   statusBar: "dark",
 };
-   export   const lightTheme={background: "#fff",
+   export   const lightTheme={
+    background: "#fff",
   surface: "#1E1E1E", 
   card: "#1E1E1E",
+  lowerback:"#f1f1f1",
 
   // Primary colors
   primary: "#062b81",

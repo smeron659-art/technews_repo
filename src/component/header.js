@@ -1,30 +1,29 @@
 import React from 'react';
+import { StyleSheet, Text } from 'react-native';
 import useTheme from '../store/useTheam';
-import { StyleSheet, View,Text } from 'react-native';
-import {
-   useFonts, 
-  Syne_400Regular,
-  Syne_500Medium,
-  Syne_600SemiBold,
-  Syne_700Bold,
-  Syne_800ExtraBold,
-} from "@expo-google-fonts/syne";
+import { useFonts, Syne_400Regular, Syne_500Medium, Syne_600SemiBold, Syne_700Bold, Syne_800ExtraBold, } from "@expo-google-fonts/syne";
 
-const Header = ({header}) => {
-    const {color,fsize,spacing}=useTheme();
-    return (
-        <Text  style={StyleSheet.headertext}>{header}</Text>
-     
-    );
-}
+const Header = ({ header }) => {
+  const { color, fsize, spacing } = useTheme();
 
-const creatStyles=(color,fsize) => StyleSheet.create({
-headertext:{
-     fontSize:fsize.heading,
-      fontFamily: Syne_400Regular,
-      marginLeft:spacing.x,
-      color:color.textPrimary,
-}
-})
+  const styles = createStyles(color, fsize, spacing);
+
+  return (
+    <Text style={styles.headerText}>
+      {header}
+    </Text>
+  );
+};
+
+const createStyles = (color, fsize, spacing) =>
+  StyleSheet.create({
+    headerText: {
+      fontSize: fsize.heading,
+      fontFamily:'Syne_500Medium',
+      marginLeft: spacing.x,
+      color: color.textPrimary,
+      fontWeight: '500', // Use this until custom fonts are working
+    },
+  });
 
 export default Header;

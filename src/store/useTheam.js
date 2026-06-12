@@ -5,7 +5,7 @@ import fsConstraint from "../utils/spacing";
 const useTheme = create((set) => ({
   themeMode: "light",
   color: themes.light,
-  fSize: fsConstraint.fontsize,
+  fsize: fsConstraint.fontsize,
   spacing: fsConstraint.spacing,
 
   toggleTheme: () =>

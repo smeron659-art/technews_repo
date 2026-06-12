@@ -1,19 +1,19 @@
-import React from "react";
+import React from "react"; 
 import useTheme from "../../store/useTheam";
 import { StyleSheet, View, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Header from "../../component/header";
 
 const Profile = () => {
  const { themeMode, toggleTheme } = useTheme();
-
 console.log("Current Theme:", themeMode);
 
  const {color,fsize, spacing}=useTheme();
-       const  styles=createStyles(color,fsize, spacing)
+  const style = createStyles(color, fsize,  );
+       
   return ( 
-     <SafeAreaView style={styles.container}>
-   
-         <Header header={'profile'}/>
+     <SafeAreaView style={style.container}>
+         <Header header={'profile'}/> 
       <Button
   title="Change Theme"
   onPress={() => {
@@ -26,10 +26,14 @@ console.log("Current Theme:", themeMode);
      )
 };
 
-const styles = StyleSheet.create({
+const  createStyles =(color,fsize, spacing) => StyleSheet.create({
   container: {
     padding: 20,
-  }
+    backgroundColor:color.background,
+  }, 
+  textcolor:{
+    color:color.textPrimary,
+  }      
 });
 
-export default Profile;
+export default Profile;     

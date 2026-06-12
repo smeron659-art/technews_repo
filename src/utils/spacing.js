@@ -8,7 +8,7 @@ export const FontSizes = {
   // ======================
   // HEADINGS
   // ======================
-  heading: 24,
+  heading: 40,
   headingSmall: 22,
   title: 20,
   titleSmall: 18,
