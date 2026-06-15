@@ -3,7 +3,7 @@ import { StyleSheet,Text,View } from 'react-native';
 const HeroTitle = (title) => {
     return (
         <View>
-        <Text></Text>    
+        <Text>{title}</Text>    
         </View>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,Pressable,ImageBackground } from 'react-native';
+import { StyleSheet,Pressable,ImageBackground,FlatList } from 'react-native';
 import useTheme from '../store/useTheam';
 import HeroTitle from './heroTitle';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,7 +9,7 @@ import Caption from './caption';
 const Card = () => {
      const {color,fsize, spacing}=useTheme();
     return (
-        <Pressable onPress={()=>alert("card presses")} style={[style.Pressabl,{borderRadius:spacing.xx}]}>
+        <Pressable onPress={()=>alert("card presses")} style={[style.Pressable,{borderRadius:spacing.xx}]}>
            <ImageBackground  source={sourse} style={style.ImageBackground}> 
             <linearGradient
               color={["rgba(0,0,0,0.05)","rgba(0,0,0,0.25)"]}
