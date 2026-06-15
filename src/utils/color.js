@@ -12,7 +12,7 @@ lowerback:"#0f0101",
   primary: "#6200EE",
   primaryLight: "#9D46FF",
   secondary: "#03DAC6",
-
+surfaceSecondary: "#1E1E1E",
   // Text colors
   textPrimary: "rgb(210, 195, 195)",
   textSecondary: "#555555",
@@ -47,6 +47,7 @@ lowerback:"#0f0101",
   surface: "#1E1E1E", 
   card: "#1E1E1E",
   lowerback:"#f1f1f1",
+  surfaceSecondary: "#F5F5F5" ,
 
   // Primary colors
   primary: "#062b81",

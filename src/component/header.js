@@ -20,7 +20,7 @@ const createStyles = (color, fsize, spacing) =>
     headerText: {
       fontSize: fsize.heading,
       fontFamily:'Syne_500Medium',
-      marginLeft: spacing.x,
+    
       color: color.textPrimary,
       fontWeight: '500', // Use this until custom fonts are working
     },

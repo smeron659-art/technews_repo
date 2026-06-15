@@ -3,7 +3,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import {  View ,StyleSheet} from 'react-native';
 import useTheme from '../store/useTheam';
 
- export default function Icon ({name}){
+ export default function Icon ({name,action}){
      const {color,fsize, spacing}=useTheme();
         const  style=createStyles(color,fsize, spacing)
     return (

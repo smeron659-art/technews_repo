@@ -22,7 +22,7 @@ const createStyle = (color, fsize,spacing) =>
     text: {
       color: color.textSecondary,
       fontSize: fsize.tag, // ✅ fixed
-      marginLeft:spacing.l
+      
     },
   });
 
