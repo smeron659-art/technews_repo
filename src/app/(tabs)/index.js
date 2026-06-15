@@ -6,6 +6,7 @@ import useTheme from "../../store/useTheam";
 import Header from "../../component/header";
 import Icon from "../../component/icon";
 import Search from "../../component/search";
+import Chips from "../../component/chips";
 const Index = () => {
   const { color, fsize, spacing ,toggleTheme,themeMode} = useTheme();
 
@@ -35,6 +36,7 @@ const Index = () => {
         </View>
       </View>
       <Search value={search} onChangeText={setsearch} />
+      <Chips/>
     </SafeAreaView>
   );
 };
