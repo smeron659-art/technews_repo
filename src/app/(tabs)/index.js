@@ -40,7 +40,7 @@ const Index = () => {
           justifyContent: "space-between",
         }}
       >
-        <Header  style={styles.textcolor} header="Yonnews" />
+        <Header  style={styles.textcolor} header="TechPulse" />
 
         <View style={{ flexDirection: "row" }}>
          <Icon

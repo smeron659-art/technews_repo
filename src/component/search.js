@@ -1,39 +1,63 @@
-import React, { version } from 'react';
+import React from 'react';
 import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import Icon from './icon';
 import useTheme from '../store/useTheam';
-import { FontSizes } from '../utils/spacing';
 
-const Search = ({value,onchangetext}) => {
-    const { color, fsize, spacing } = useTheme();
-     const searchingTopic = (value) => {
-  Alert.alert(
-    "Searching",
-    `You searched for: ${value}`
+const Search = ({ value, onChangeText }) => {
+  const { color, fsize, spacing } = useTheme();
+
+  const searchingTopic = () => {
+    Alert.alert(
+      'Searching',
+      `You searched for: ${value || 'Nothing entered'}`
+    );
+  };
+
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: color.surfaceSecondary,
+          borderRadius: spacing.m,
+          marginTop: spacing.m,
+          paddingHorizontal: spacing.m,
+        },
+      ]}
+    >
+      <Icon
+        name="search-outline"
+        action={searchingTopic}
+      />
+
+      <TextInput
+        style={[
+          styles.input,
+          {
+            color: color.textPrimary,
+            fontSize: fsize.body,
+          },
+        ]}
+        value={value}
+        onChangeText={onChangeText}
+        placeholder="Search news, topics, authors..."
+        placeholderTextColor={color.textSecondary}
+      />
+    </View>
   );
 };
- 
-    return (
-        <View style={[styles.continer,{backgroundColor:color.surfaceSecondary,
-         padding:spacing.s,
-        borderRadius:spacing.m ,
-        marginTop:spacing.x}]}> 
-        <Icon name="search-outline"  action={()=> searchingTopic(value)}/>
-        <TextInput   style={[styles.input,{color:color.textPrimary,
-fontSizes:fsize.body}]}  value={value} onchangetext={onchangetext}
-           placeholder=' search new,topic,authours....'
-           placeholderTextColor={color.textSecondary}  />
-        </View>
-    );
-}
 
-const styles= StyleSheet.create({
-    continer:{
-        flexDirection:'row'
-    },
-    input:{
-flex:1
-    }
-})
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 55,
+  },
+
+  input: {
+    flex: 1,
+    marginLeft: 10,
+  },
+});
 
 export default Search;

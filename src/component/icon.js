@@ -1,30 +1,32 @@
 import React from 'react';
-import Ionicons from "@expo/vector-icons/Ionicons";
-import {  View ,StyleSheet} from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Pressable, StyleSheet } from 'react-native';
 import useTheme from '../store/useTheam';
 
- export default function Icon ({name,action}){
-     const {color,fsize, spacing}=useTheme();
-        const  style=createStyles(color,fsize, spacing)
-    return (
-        <View style={style.continer}>
-        <Ionicons name={name} size={24}  color={color.textSecondary}/>
-        </View>
-    );
+export default function Icon({ name, action }) {
+  const { color, spacing } = useTheme();
+  const styles = createStyles(color, spacing);
+
+  return (
+    <Pressable style={styles.container} onPress={action}>
+      <Ionicons
+        name={name}
+        size={24}
+        color={color.textSecondary}
+      />
+    </Pressable>
+  );
 }
 
-const createStyles = (color,fsize, spacing)=>StyleSheet.create({
-    continer:{
-        backgroundColor:color.lowerback,
-        height:50,
-        width:50,
-  sm: 8,
-        margin:spacing.sm,
-        borderRadius:11,
-        alignSelf:'flex-end',
-        justifyContent:'center',
-        alignIalignIteam:'center',
-    }
-})
-
-
+const createStyles = (color, spacing) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: color.lowerback,
+      height: 50,
+      width: 50,
+      margin: spacing.sm,
+      borderRadius: 11,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });

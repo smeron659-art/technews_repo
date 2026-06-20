@@ -1,11 +1,22 @@
 import React from 'react';
-import { StyleSheet,Text,View } from 'react-native';
-const HeroTitle = (title) => {
-    return (
-        <View>
-        <Text>{title}</Text>    
-        </View>
-    );
-}
+import { Text, StyleSheet } from 'react-native';
+
+const HeroTitle = ({ title }) => {
+  return (
+    <Text style={styles.title}>
+      {title}
+    </Text>
+  );
+};
+
+const styles = StyleSheet.create({
+  title: {
+    color: '#FFFFFF',
+    fontSize: 24,
+    fontWeight: '700',
+    lineHeight: 32,
+    marginTop: 12,
+  },
+});
 
 export default HeroTitle;

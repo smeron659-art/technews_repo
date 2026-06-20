@@ -1,42 +1,86 @@
 import React from 'react';
-import { StyleSheet,Pressable,ImageBackground,FlatList } from 'react-native';
+import { StyleSheet, Pressable, ImageBackground, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import useTheme from '../store/useTheam';
 import HeroTitle from './heroTitle';
-import { LinearGradient } from 'expo-linear-gradient';
-import useTheme from '../store/useTheam';
 import Tag from './tag';
 import Caption from './caption';
+
+const source = require('../../assets/heritage.jpg');
+
 const Card = () => {
-     const {color,fsize, spacing}=useTheme();
-    return (
-        <Pressable onPress={()=>alert("card presses")} style={[style.Pressable,{borderRadius:spacing.xx}]}>
-           <ImageBackground  source={sourse} style={style.ImageBackground}> 
-            <linearGradient
-              color={["rgba(0,0,0,0.05)","rgba(0,0,0,0.25)"]}
-              style={[style.gradinet,{padding:spacing.l}]}> 
-              <Tag   tagLabel={"LIVE"}/>
-              <view style={style.content} >
-             <HeroTitle title={"open AI universal GPT-5"}/>
-             <Caption  author={'Maya chen'}  readtime={'5 min react'}/>
-             </view>
-             </linearGradient>
-            </ImageBackground> 
-        </Pressable>
-    );
-}
- const style=StyleSheet.create({
-    Pressable:{
-        height:200,
-        width:"100%",
-        overflow:"hidden",
+  const { spacing } = useTheme();
+
+  return (
+    <Pressable
+      onPress={() => alert('Card pressed')}
+      style={[
+        styles.card,
+        {
+          borderRadius: spacing.l,
+          marginHorizontal: spacing.m,
+          marginVertical: spacing.s,
+        },
+      ]}
+    >
+      <ImageBackground
+        source={source}
+        style={styles.image}
+        imageStyle={{ borderRadius: spacing.l }}
+      >
+        <LinearGradient
+          colors={[
+            'rgba(0,0,0,0)',
+            'rgba(0,0,0,0.3)',
+            'rgba(0,0,0,0.9)',
+          ]}
+          style={[styles.gradient, { padding: spacing.l }]}
+        >
+          <Tag tagLabel="LIVE" />
+
+          <View style={styles.content}>
+            <HeroTitle title="OpenAI Universal GPT-5" />
+
+            <Caption
+              author="Maya Chen"
+              readtime="5 min read"
+            />
+          </View>
+        </LinearGradient>
+      </ImageBackground>
+    </Pressable>
+  );
+};
+
+const styles = StyleSheet.create({
+  card: {
+    height: 280,
+    overflow: 'hidden',
+
+    elevation: 10,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
     },
-    ImageBackground:{flex:1},
-    gradinet:{flex:1},
-    content:{
-        flex:1,
-        justifyContent:'flex-end',
-    }
+    shadowOpacity: 0.25,
+    shadowRadius: 12,
+  },
 
+  image: {
+    flex: 1,
+  },
 
- })
+  gradient: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+
+  content: {
+    gap: 8,
+  },
+});
+
 export default Card;

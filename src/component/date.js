@@ -26,4 +26,4 @@ const createStyle = (color, fsize,spacing) =>
     },
   });
 
-export default Date; 
+export default Date;       
