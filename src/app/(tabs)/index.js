@@ -90,7 +90,15 @@ const Index = () => {
     
   }
   showsVerticalScrollIndicator={false}
-  renderItem={({item})=>(<ListViwe title={title.item} postedtime={postedtime.item} readtime={readtime.item}/>)}
+ renderItem={({ item }) => (
+  <ListViwe
+    imageurl={item.imageurl}
+    tagLable={item.tagLable}
+    title={item.title}
+    postedtime={item.postedtime}
+    readtime={item.readtime}
+  />
+)}
 />
 
     </SafeAreaView>

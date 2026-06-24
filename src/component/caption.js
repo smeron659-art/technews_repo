@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '../store/useTheam';
-const Caption = ({ author, readtime,postedtime,tagLable }) => {
+const Caption = ({ author, readtime,postedtime }) => {
   const { color, fsize } = useTheme();
 
   return (
@@ -20,9 +20,10 @@ const Caption = ({ author, readtime,postedtime,tagLable }) => {
       }
        { postedtime &&<Text
         style={[
-          styles.author,
+          
           {
             fontSize: fsize.caption,
+            color:color.surface
           },
         ]}
       >
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   },
 
   time: {
-    color: '#FFFFFF',
+    color: '#856161',
     marginLeft: 5,
   },
 });
