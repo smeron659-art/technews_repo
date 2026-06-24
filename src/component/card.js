@@ -27,7 +27,7 @@ const Card = () => {
       <ImageBackground
         source={source}
         style={styles.image}
-        imageStyle={{ borderRadius: spacing.l }}
+        imageStyle={{ borderRadius:20 }}
       >
         <LinearGradient
           colors={[
@@ -55,8 +55,9 @@ const Card = () => {
 
 const styles = StyleSheet.create({
   card: {
-    height: 280,
+    height: 210,
     overflow: 'hidden',
+     marginTop:2,
 
     elevation: 10,
 

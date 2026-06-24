@@ -19,16 +19,17 @@ const Chips = () => {
           onPress={() => setSelectcatagory(cat)}
           style={{
             backgroundColor:
-              selectcatagory === cat ? color.primary : color.background,
-            marginRight: spacing.m,
-            paddingVertical: spacing.m,
-            paddingHorizontal: spacing.m,
-            borderRadius: spacing.m,
+              selectcatagory === cat ? color.primary : color.back,
+            marginRight: spacing.ms,
+            paddingVertical: spacing.md,
+            paddingHorizontal: spacing.lg,
+            borderRadius: spacing.l,
+      
           }}
         >
           <Text
             style={{
-              color: selectcatagory === cat ? 'white' : color.textSecondary,
+              color: selectcatagory === cat ? 'white' : color.textSecondary, fontSize:spacing.lg
             }}
           >
             {cat}

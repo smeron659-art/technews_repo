@@ -2,13 +2,12 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '../store/useTheam';
-
-const Caption = ({ author, readtime }) => {
+const Caption = ({ author, readtime,postedtime,tagLable }) => {
   const { color, fsize } = useTheme();
 
   return (
     <View style={styles.container}>
-      <Text
+    { !postedtime &&<Text
         style={[
           styles.author,
           {
@@ -18,7 +17,18 @@ const Caption = ({ author, readtime }) => {
       >
         {author}
       </Text>
-
+      }
+       { postedtime &&<Text
+        style={[
+          styles.author,
+          {
+            fontSize: fsize.caption,
+          },
+        ]}
+      >
+        {postedtime}
+      </Text>
+      }
       <View
         style={[
           styles.dot,
@@ -28,12 +38,12 @@ const Caption = ({ author, readtime }) => {
         ]}
       />
 
-      <Ionicons
+    { !postedtime&& <Ionicons
         name="time-outline"
         size={14}
         color="#FFFFFF"
       />
-
+    }
       <Text
         style={[
           styles.time,

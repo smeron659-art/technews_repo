@@ -1,7 +1,14 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SystemBars } from "react-native-edge-to-edge";
-import useTheam from "../../store/useTheam";
+import useTheam from "../../store/useTheam";import {
+  useFonts,
+  Syne_400Regular,
+  Syne_500Medium,
+  Syne_600SemiBold,
+  Syne_700Bold,
+  Syne_800ExtraBold,
+} from '@expo-google-fonts/syne';
 
 export default function Layout() {
   const { color } = useTheam();

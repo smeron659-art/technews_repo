@@ -10,13 +10,13 @@
 lowerback:"#0f0101",
  overlayLight: "rgba(255,255,255,0.05)",
   // Primary colors
-  primary: "#6200EE",
+  primary: "#093cd5",
   primaryLight: "#9D46FF",
   secondary: "#03DAC6",
 surfaceSecondary: "#1E1E1E",
   // Text colors
-  textPrimary: "rgb(210, 195, 195)",
-  textSecondary: "#555555",
+  textPrimary: "rgb(255, 255, 255)",
+  textSecondary: "#c7bdbd",
   textDisabled: "#999999",
 
   // Border colors
