@@ -22,4 +22,18 @@ export const getItem = async (key) => {
     console.log("Error reading data:", error);
     return null;
   }
+}; 
+export const removeItem = async (key) => {
+  try {
+    const value = await AsyncStorage.removeItem(key);
+
+    if (value !== null) {
+      return JSON.parse(value);
+    }
+
+    return null;
+  } catch (error) {
+    console.log("Error reading data:", error);
+    return null;
+  }
 };

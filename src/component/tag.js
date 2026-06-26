@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import useTheme from '../store/useTheam';
 
-const Tag = ({ tagLabel }) => {
+const Tag = ({ tagLabel ,colors }) => {
   const { color, spacing } = useTheme();
 
   return (
-    <View
+        <View
       style={[
         styles.container,
         {
@@ -15,8 +15,8 @@ const Tag = ({ tagLabel }) => {
           paddingVertical: spacing.s,
         },
       ]}
-    >
-      <View style={styles.dot} />
+    >  
+     {!colors && <View style={styles.dot} /> }
 
       <Text style={styles.text}>
         {tagLabel}
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   },
 
   dot: {
-    width: 8,
-    height: 8,
+    width: 10,
+    height: 17,
     borderRadius: 4,
     backgroundColor: '#8d1717',
     marginRight: 8,
