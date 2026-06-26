@@ -6,11 +6,8 @@ import useTheme from "../store/useTheam";
 import Tag from "./tag";
 import Caption from "./caption";
 
-import {
-  getItem,
-  addBookmark,
-  removeBookmark,
-} from "../utils/storage";
+import { getItem } from "../utils/storage";
+import useBookmark from "../store/usebookmark";
 
 const ListViwe = ({
   imageurl,
@@ -22,34 +19,35 @@ const ListViwe = ({
 }) => {
   const { color, fsize, spacing } = useTheme();
 
+  const { addBookmark, removeBookmark } = useBookmark();
+
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
     const checkBookmarkStatus = async () => {
       try {
-        const bookmarkData = await getItem("bookmark");
+        const bookmarks = await getItem("bookmark");
 
-        if (bookmarkData) {
-          const parsedBookmark = JSON.parse(bookmarkData);
-
-          const bookmarked = parsedBookmark.some(
+        if (bookmarks) {
+          const bookmarked = bookmarks.some(
             (item) => item.title === title
           );
 
           setIsbookmark(bookmarked);
         }
       } catch (error) {
-        console.log("Error checking bookmark:", error);
+        console.log(error);
       }
     };
 
     checkBookmarkStatus();
   }, [title]);
 
-  const handelBookmark = async () => {
+  const handleBookmark = async () => {
     try {
       if (isBookmark) {
         await removeBookmark(title);
+        setIsbookmark(false);
       } else {
         await addBookmark({
           title,
@@ -58,9 +56,9 @@ const ListViwe = ({
           postedtime,
           readtime,
         });
-      }
 
-      setIsbookmark(!isBookmark);
+        setIsbookmark(true);
+      }
     } catch (error) {
       console.log("Bookmark Error:", error);
     }
@@ -105,11 +103,11 @@ const ListViwe = ({
         />
       </View>
 
-      <Pressable onPress={handelBookmark}>
+      <Pressable onPress={handleBookmark}>
         <Ionicons
           name={isBookmark ? "bookmark" : "bookmark-outline"}
           size={24}
-          color={color.primary}
+          color={isBookmark ? "#007AFF" : "#999"}
         />
       </Pressable>
     </View>
