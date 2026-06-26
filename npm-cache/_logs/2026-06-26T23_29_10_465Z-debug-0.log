@@ -7,12 +7,7 @@
 6 silly config load:file:C:\Users\meron\AppData\Roaming\npm\etc\npmrc
 7 verbose title npm exec expo start --clear
 8 verbose argv "exec" "--" "expo" "start" "--clear"
-9 verbose logfile logs-max:10 dir:D:\Weekly_health_tracker\npm-cache\_logs\2026-06-20T19_26_38_660Z-
-10 verbose logfile D:\Weekly_health_tracker\npm-cache\_logs\2026-06-20T19_26_38_660Z-debug-0.log
-11 silly logfile done cleaning log files
-12 verbose cwd D:\Weekly_health_tracker
-13 verbose os Windows_NT 10.0.22631
-14 verbose node v24.13.1
-15 verbose npm  v11.8.0
-16 verbose exit 0
-17 info ok
+9 verbose logfile logs-max:10 dir:D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T23_29_10_465Z-
+10 verbose logfile D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T23_29_10_465Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files

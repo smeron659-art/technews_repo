@@ -5,15 +5,15 @@
 4 silly config load:file:D:\Weekly_health_tracker\.npmrc
 5 silly config load:file:C:\Users\meron\.npmrc
 6 silly config load:file:C:\Users\meron\AppData\Roaming\npm\etc\npmrc
-7 verbose title npm exec expo start --clear
-8 verbose argv "exec" "--" "expo" "start" "--clear"
-9 verbose logfile logs-max:10 dir:D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T20_20_22_276Z-
-10 verbose logfile D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T20_20_22_276Z-debug-0.log
+7 verbose title npm exec expo start --tunnel
+8 verbose argv "exec" "--" "expo" "start" "--tunnel"
+9 verbose logfile logs-max:10 dir:D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T23_28_31_510Z-
+10 verbose logfile D:\Weekly_health_tracker\npm-cache\_logs\2026-06-26T23_28_31_510Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
 13 verbose cwd D:\Weekly_health_tracker
 14 verbose os Windows_NT 10.0.22631
 15 verbose node v24.13.1
 16 verbose npm  v11.8.0
-17 verbose exit 0
-18 info ok
+17 verbose exit 1
+18 verbose code 1

@@ -24,24 +24,22 @@ const ListViwe = ({
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
-    const checkBookmarkStatus = async () => {
-      try {
-        const bookmarks = await getItem("bookmark");
+  const checkBookmarkStatus = async () => {
+    try {
+      const bookmarks = (await getItem("bookmarks")) || [];
 
-        if (bookmarks) {
-          const bookmarked = bookmarks.some(
-            (item) => item.title === title
-          );
+      const bookmarked = bookmarks.some(
+        (item) => item.title === title 
+      );
 
-          setIsbookmark(bookmarked);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
+      setIsbookmark(bookmarked);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    checkBookmarkStatus();
-  }, [title]);
+  checkBookmarkStatus();
+}, [title]);
 
   const handleBookmark = async () => {
     try {

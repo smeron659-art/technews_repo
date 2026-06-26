@@ -9,10 +9,21 @@ import useTheam from "../../store/useTheam";import {
   Syne_700Bold,
   Syne_800ExtraBold,
 } from '@expo-google-fonts/syne';
-
+import { useEffect } from "react";
+import { getItem } from "../../utils/storage";
 export default function Layout() {
-  const { color } = useTheam();
-    
+  const { color,setTheme } = useTheam();
+    useEffect(() => {
+  const loadTheme = async () => {
+    const storedTheme = await getItem("themeMode");
+
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  };
+
+  loadTheme();
+}, []);
   return (
     <>
       <SystemBars style="auto" />

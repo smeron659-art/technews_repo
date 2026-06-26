@@ -2,44 +2,33 @@ import { create } from "zustand";
 import { setItem, getItem } from "../utils/storage";
 
 const useBookmark = create((set, get) => ({
-  bookmark: [],
+  bookmarks: [],
 
   loadBookmarks: async () => {
-    const data = await getItem("bookmark");
+    const data = await getItem("bookmarks");
+    set({ bookmarks: data || [] });
+  },
 
-    if (data) {
-      set({
-        bookmark: JSON.parse(data),
-      });
+  addBookmark: async (item) => {
+    const current = get().bookmarks;
+
+    const exists = current.some((b) => b.title === item.title);
+
+    if (!exists) {
+      const updated = [...current, item];
+
+      set({ bookmarks: updated });
+      await setItem("bookmarks", updated);
     }
   },
 
-  addBookmark: async (bookmark) => {
-    const updateBookmark = [...get().bookmark, bookmark];
-
-    set({
-      bookmark: updateBookmark,
-    });
-
-    await setItem(
-      "bookmark",
-      JSON.stringify(updateBookmark)
-    );
-  },
-
-  removeBookmark: async (bookmarkId) => {
-    const updateBookmark = get().bookmark.filter(
-      (b) => b.id !== bookmarkId
+  removeBookmark: async (title) => {
+    const updated = get().bookmarks.filter(
+      (b) => b.title !== title
     );
 
-    set({
-      bookmark: updateBookmark,
-    });
-
-    await setItem(
-      "bookmark",
-      JSON.stringify(updateBookmark)
-    );
+    set({ bookmarks: updated });
+    await setItem("bookmarks", updated);
   },
 }));
 

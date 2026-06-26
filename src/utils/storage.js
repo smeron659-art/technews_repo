@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// SAVE
 export const setItem = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value);
@@ -9,6 +10,7 @@ export const setItem = async (key, value) => {
   }
 };
 
+// GET
 export const getItem = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
@@ -17,23 +19,24 @@ export const getItem = async (key) => {
       return JSON.parse(value);
     }
 
+    // IMPORTANT: bookmarks must always be array
+    if (key === "bookmarks") return [];
+
     return null;
   } catch (error) {
     console.log("Error reading data:", error);
+
+    if (key === "bookmarks") return [];
+
     return null;
   }
-}; 
+};
+
+// REMOVE KEY
 export const removeItem = async (key) => {
   try {
-    const value = await AsyncStorage.removeItem(key);
-
-    if (value !== null) {
-      return JSON.parse(value);
-    }
-
-    return null;
+    await AsyncStorage.removeItem(key);
   } catch (error) {
-    console.log("Error reading data:", error);
-    return null;
+    console.log("Error removing data:", error);
   }
 };
