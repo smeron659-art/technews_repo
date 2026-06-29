@@ -1,8 +1,50 @@
-export  const  Catagories=[
-    'All',
-    'AI ',
-    'Web Dev',
-    'security',
-    'Startups',
-    'Gadget',
-] 
+export const Categories = [
+  {
+    id: 1,
+    iconName: "trending-up",
+    iconColor: "#FFFFFF",
+    iconBackground: "#FF6B35",
+    categoryName: "Trending",
+    articleCount: "128 Articles",
+  },
+  {
+    id: 2,
+    iconName: "hardware-chip",
+    iconColor: "#FFFFFF",
+    iconBackground: "#3B82F6",
+    categoryName: "Technology",
+    articleCount: "96 Articles",
+  },
+  {
+    id: 3,
+    iconName: "football",
+    iconColor: "#FFFFFF",
+    iconBackground: "#10B981",
+    categoryName: "Sports",
+    articleCount: "84 Articles",
+  },
+  {
+    id: 4,
+    iconName: "fitness",
+    iconColor: "#FFFFFF",
+    iconBackground: "#EF4444",
+    categoryName: "Health",
+    articleCount: "72 Articles",
+  },
+  {
+    id: 5,
+    iconName: "film",
+    iconColor: "#e68282",
+    iconBackground: "#8B5CF6",
+    categoryName: "Movies",
+    articleCount: "65 Articles",
+  },
+  {
+    id: 6,
+    iconName: "briefcase",
+    iconColor: "#FFFFFF",
+    iconBackground: "#F59E0B",
+    categoryName: "Business",
+    articleCount: "58 Articles",
+  },
+];

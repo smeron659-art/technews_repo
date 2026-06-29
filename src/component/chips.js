@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View, Text } from 'react-native';
 import useTheme from '../store/useTheam';
-import { Catagories } from '../app/data/catagori';
+import { Categories } from '../app/data/catagori';
+import CategoryCard from './catagorycard';
 
 const Chips = () => {
   const { color, fsize, spacing } = useTheme();
-  const [selectcatagory, setSelectcatagory] = useState("Catagories[0].catagoryname");
+  const [selectcatagory, setSelectcatagory] = useState(Categories[0].categoryName)
 
   return (
     <ScrollView
@@ -13,13 +14,13 @@ const Chips = () => {
       showsHorizontalScrollIndicator={false}
       style={{ margin: spacing.l, flexGrow: 0 }}
     >
-      {Catagories.map((cat) => (
+      {Categories.map((cat) => (
         <Pressable
           key={cat.id}
-          onPress={() => setSelectcatagory(cat.catagoryname)}
+          onPress={() => setSelectcatagory(cat.categoryName)}
           style={{
             backgroundColor:
-              selectcatagory === cat.catagoryname ? color.primary : color.back,
+              selectcatagory === cat.categoryName ? color.primary : color.back,
             marginRight: spacing.ms,
             paddingVertical: spacing.md,
             paddingHorizontal: spacing.lg,
@@ -29,10 +30,10 @@ const Chips = () => {
         >
           <Text
             style={{
-              color: selectcatagory === cat.catagoryname ? 'white' : color.textSecondary, fontSize:spacing.lg
+              color: selectcatagory === cat.categoryName ? 'white' : color.textSecondary, fontSize:spacing.lg
             }}
           >
-            {cat.catagoryname}
+            {cat.categoryName}
           </Text>
         </Pressable>
       ))}
