@@ -25,7 +25,7 @@ postedtime  :'3 houre',
 },{
     id: '4',
     title: 'First Item',
-  tagLable:' the ethiopy',
+  tagLabel:' the ethiopy',
 postedtime  :'3 houre',
  readtime :'5 hore',
  imageurl: require('../../../assets/heritage.jpg')

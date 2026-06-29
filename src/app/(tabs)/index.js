@@ -82,18 +82,18 @@ const Index = () => {
       <Search
         value={search}
         onChangeText={setsearch}
+        placeholder="news, topics, authors..."
       />
       <Chips /> 
      <Card title={"HeCard"} /> 
      <Listheader/>
     </>
-    
   }
   showsVerticalScrollIndicator={false}
  renderItem={({ item }) => (
   <ListViwe
     imageurl={item.imageurl}
-    tagLable={item.tagLable}
+    tagLabel={item.tagLabel}
     title={item.title}
     postedtime={item.postedtime}
     readtime={item.readtime}

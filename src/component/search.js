@@ -3,7 +3,7 @@ import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import Icon from './icon';
 import useTheme from '../store/useTheam';
 
-const Search = ({ value, onChangeText }) => {
+const Search = ({ value, onChangeText,placeholder }) => {
   const { color, fsize, spacing } = useTheme();
 
   const searchingTopic = () => {
@@ -40,7 +40,7 @@ const Search = ({ value, onChangeText }) => {
         ]}
         value={value}
         onChangeText={onChangeText}
-        placeholder="Search news, topics, authors..."
+        placeholder={placeholder}
         placeholderTextColor={color.textSecondary}
       />
     </View>

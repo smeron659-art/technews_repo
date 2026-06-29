@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
 import useTheme from "../store/useTheam";
 import Tag from "./tag";
 import Caption from "./caption";
-
 import { getItem } from "../utils/storage";
 import useBookmark from "../store/usebookmark";
 
 const ListViwe = ({
   imageurl,
-  tagLable,
+  tagLabel,
   title,
   postedtime,
   readtime,
-  colors,
+  colorts,
 }) => {
   const { color, fsize, spacing } = useTheme();
 
@@ -50,7 +48,7 @@ const ListViwe = ({
         await addBookmark({
           title,
           imageurl,
-          tagLable,
+          tagLabel,
           postedtime,
           readtime,
         });
@@ -77,11 +75,9 @@ const ListViwe = ({
       />
 
       <View style={styles.content}>
-        <Tag
-          tagLable={tagLable}
-          colors={colors || "transparent"}
-        />
-
+       
+<Tag tagLabel={tagLabel} 
+ colors={colorts || "transparent"}/>
         <Text
           numberOfLines={2}
           style={[
@@ -133,5 +129,5 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
 });
-
-export default ListViwe;
+ 
+export default ListViwe;   

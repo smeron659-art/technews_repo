@@ -5,7 +5,7 @@ import { Catagories } from '../app/data/catagori';
 
 const Chips = () => {
   const { color, fsize, spacing } = useTheme();
-  const [selectcatagory, setSelectcatagory] = useState("");
+  const [selectcatagory, setSelectcatagory] = useState("Catagories[0].catagoryname");
 
   return (
     <ScrollView
@@ -15,11 +15,11 @@ const Chips = () => {
     >
       {Catagories.map((cat) => (
         <Pressable
-          key={cat}
-          onPress={() => setSelectcatagory(cat)}
+          key={cat.id}
+          onPress={() => setSelectcatagory(cat.catagoryname)}
           style={{
             backgroundColor:
-              selectcatagory === cat ? color.primary : color.back,
+              selectcatagory === cat.catagoryname ? color.primary : color.back,
             marginRight: spacing.ms,
             paddingVertical: spacing.md,
             paddingHorizontal: spacing.lg,
@@ -29,10 +29,10 @@ const Chips = () => {
         >
           <Text
             style={{
-              color: selectcatagory === cat ? 'white' : color.textSecondary, fontSize:spacing.lg
+              color: selectcatagory === cat.catagoryname ? 'white' : color.textSecondary, fontSize:spacing.lg
             }}
           >
-            {cat}
+            {cat.catagoryname}
           </Text>
         </Pressable>
       ))}

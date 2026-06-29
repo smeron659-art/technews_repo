@@ -5,4 +5,4 @@ export  const  Catagories=[
     'security',
     'Startups',
     'Gadget',
-]
+] 
