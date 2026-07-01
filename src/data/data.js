@@ -5,7 +5,7 @@ const DATA = [
   tagLable:' the ethiopy',
 postedtime  :'3 hour',
  readtime :'5 houre',
- imageurl: require('../../../assets/heritage.jpg')
+ imageurl: require('../../assets/heritage.jpg')
   } ,
    {
     id: '2',
@@ -13,7 +13,7 @@ postedtime  :'3 hour',
   tagLable:' the ethiopy',
 postedtime  :'3 houre',
  readtime :'5 houre',
-imageurl: require('../../../assets/heritage.jpg')
+imageurl: require('../../assets/heritage.jpg')
   },
    {
    id: '3',
@@ -21,14 +21,14 @@ imageurl: require('../../../assets/heritage.jpg')
   tagLable:' the ethiopy',
 postedtime  :'3 houre',
  readtime :'5 houre',
- imageurl: require('../../../assets/heritage.jpg')
+ imageurl: require('../../assets/heritage.jpg')
 },{
     id: '4',
     title: 'First Item',
   tagLabel:' the ethiopy',
 postedtime  :'3 houre',
  readtime :'5 hore',
- imageurl: require('../../../assets/heritage.jpg')
+ imageurl: require('../../assets/heritage.jpg')
 }
   
 ];   export { DATA };

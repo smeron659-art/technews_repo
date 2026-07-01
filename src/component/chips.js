@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View, Text } from 'react-native';
 import useTheme from '../store/useTheam';
-import { Categories } from '../app/data/catagori';
-import CategoryCard from './catagorycard';
+import { Categories } from '../data/catagori';
+
 
 const Chips = () => {
   const { color, fsize, spacing } = useTheme();
@@ -20,7 +20,7 @@ const Chips = () => {
           onPress={() => setSelectcatagory(cat.categoryName)}
           style={{
             backgroundColor:
-              selectcatagory === cat.categoryName ? color.primary : color.back,
+              selectcatagory === cat.categoryName ? color.primary : color.background,
             marginRight: spacing.ms,
             paddingVertical: spacing.md,
             paddingHorizontal: spacing.lg,

@@ -2,13 +2,13 @@ export const Categories = [
   {
     id: 1,
     iconName: "trending-up",
-    iconColor: "#FFFFFF",
+    iconColor: "#FFFFFF",  
     iconBackground: "#FF6B35",
     categoryName: "Trending",
     articleCount: "128 Articles",
-  },
-  {
-    id: 2,
+  },     
+  {   
+    id: 2,   
     iconName: "hardware-chip",
     iconColor: "#FFFFFF",
     iconBackground: "#3B82F6",
@@ -16,7 +16,7 @@ export const Categories = [
     articleCount: "96 Articles",
   },
   {
-    id: 3,
+    id: 3,   
     iconName: "football",
     iconColor: "#FFFFFF",
     iconBackground: "#10B981",
@@ -39,12 +39,12 @@ export const Categories = [
     categoryName: "Movies",
     articleCount: "65 Articles",
   },
-  {
+  {  
     id: 6,
     iconName: "briefcase",
     iconColor: "#FFFFFF",
     iconBackground: "#F59E0B",
     categoryName: "Business",
     articleCount: "58 Articles",
-  },
-];
+  },  
+];        

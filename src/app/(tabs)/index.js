@@ -8,7 +8,7 @@ import Icon from "../../component/icon";
 import Search from "../../component/search";
 import Chips from "../../component/chips";
 import Card from "../../component/card";
-import{ DATA} from "../data/data";
+import{ DATA} from "../../data/data";
 import ListViwe from "../../component/listViwe";
 
 const Index = () => {

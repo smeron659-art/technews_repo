@@ -4,11 +4,11 @@
  
   export  const lightStatesBar='light'
    export   const DarkTheme={
-  background: '#161515',
-  surface: '#F5F5F5',
+  background: '#252424',
+  surface: '#dbd8d8',
   card: '#FFFFFF',
 lowerback:"#0f0101",
- overlayLight: "rgba(255,255,255,0.05)",
+ overlayLight: "rgba(78, 68, 68, 0.05)",
   // Primary colors
   primary: "#093cd5",
   primaryLight: "#9D46FF",
@@ -44,12 +44,12 @@ surfaceSecondary: "#1E1E1E",
   statusBar: "dark",
 };
    export   const lightTheme={
-    background: "#fff",
-  surface: "#1E1E1E", 
+    background: "#ececec",
+  surface: "#252424", 
   card: "#1E1E1E",
   lowerback:"#f1f1f1",
   surfaceSecondary: "#F5F5F5" ,
-  overlayLight: "rgba(0,0,0,0.1)",
+  overlayLight: "rgba(97, 76, 76, 0.1)",
 
   // Primary colors
   primary: "#062b81",
@@ -57,7 +57,7 @@ surfaceSecondary: "#1E1E1E",
   secondary: "#03DAC6",
 
   // Text colors
-  textPrimary: "#141313",
+  textPrimary: "#cdc5c5",
   textSecondary: "#2d2626",
   textDisabled: "#777777",
 
