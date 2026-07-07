@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// SAVE
+
 export const setItem = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value);
@@ -10,7 +10,7 @@ export const setItem = async (key, value) => {
   }
 };
 
-// GET
+
 export const getItem = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
@@ -19,7 +19,7 @@ export const getItem = async (key) => {
       return JSON.parse(value);
     }
 
-    // IMPORTANT: bookmarks must always be array
+   
     if (key === "bookmarks") return [];
 
     return null;
@@ -32,7 +32,7 @@ export const getItem = async (key) => {
   }
 };
 
-// REMOVE KEY
+
 export const removeItem = async (key) => {
   try {
     await AsyncStorage.removeItem(key);

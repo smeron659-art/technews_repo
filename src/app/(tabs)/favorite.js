@@ -1,29 +1,234 @@
+import React, { useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import useTheme from "../../store/useTheam";
+import Chips from "../../component/chips";
+import ListViwe from "../../component/listViwe";
+import Header from "../../component/header";
 
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import useTheme from '../../store/useTheam';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../../component/header';
+import { getItem } from "../../utils/storage";
+import useBookmark from "../../store/usebookmark";
+
 
 const Favorite = () => {
-    const {color,fsize, spacing}=useTheme();
-       const  styles=createStyles(color,fsize, spacing)
-    return (
-        <SafeAreaView style={styles.colorof}>
-        <Header style={styles.textcolor} header={'Favorte'}/>
-        </SafeAreaView>
-    );
-}
 
-const createStyles= (color,fsize, spacing)=> StyleSheet.create({
-  colorof:{
-    backgroundColor:color.background,
-    flex:1,
-  }, 
-   textcolor:{
-      color:color.textPrimary,
-    }  
-})
+
+  const {
+    color,
+    fsize,
+    spacing
+  } = useTheme();
+
+
+
+  const {
+    bookmarks,
+    setBookmarks
+  } = useBookmark();
+
+
+
+  const styles = createStyles(
+    color,
+    fsize,
+    spacing
+  );
+
+
+
+
+  useEffect(() => {
+
+
+    const loadBookmarks = async () => {
+
+
+      try {
+
+
+        const storedBookmark =
+          await getItem("bookmarks");
+
+
+
+        const parseBookmark =
+          storedBookmark
+          ? JSON.parse(storedBookmark)
+          : [];
+
+
+
+        setBookmarks(parseBookmark);
+
+
+
+        console.log(
+          "Saved bookmarks:",
+          parseBookmark
+        );
+
+
+
+      } catch(error) {
+
+
+        console.log(
+          "Load bookmark error:",
+          error
+        );
+
+
+      }
+
+
+    };
+
+
+
+    loadBookmarks();
+
+
+  }, []);
+
+
+
+
+
+
+  return (
+
+    <SafeAreaView style={styles.container}>
+
+
+      <Header
+        style={styles.textcolor}
+        header="Saved"
+      />
+
+      <Text
+        style={{
+          color: color.textPrimary,
+          fontSize:fsize.body
+        }}
+      >
+
+        {bookmarks.length} critical reads saved
+
+      </Text>
+
+
+      <Chips />
+
+
+
+
+
+
+      {
+        bookmarks.length === 0 ? (
+
+
+          <View
+            style={{
+              padding: spacing.l
+            }}
+          >
+
+            <Text
+              style={{
+                color: color.textPrimary,
+                fontSize: fsize.body
+              }}
+            >
+
+              Have no saved bookmarks
+
+            </Text>
+
+
+          </View>
+
+
+
+        ) : (
+
+
+
+          <FlatList
+
+            data={bookmarks}
+
+
+            keyExtractor={(item)=>item.id}
+
+
+            renderItem={({item})=>(
+
+
+              <ListViwe
+
+                item={item}
+
+              />
+
+
+            )}
+
+          />
+
+
+        )
+      }
+
+
+
+    </SafeAreaView>
+
+  );
+
+};
+
 
 
 export default Favorite;
+
+
+
+
+
+const createStyles = (
+  color,
+  fsize,
+  spacing
+)=> StyleSheet.create({
+
+
+  container:{
+
+
+    backgroundColor:color.background,
+
+    flex:1,
+
+    padding:spacing.l,
+
+
+  },
+
+
+  textcolor:{
+
+
+    color:color.textPrimary,
+
+
+  },
+
+
+});

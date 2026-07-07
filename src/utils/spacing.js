@@ -1,6 +1,6 @@
 export const FontSizes = {
   // ======================
-  // HERO / LARGE NUMBERS
+  // HERO / LARGE NUMBERS  
   // ======================
   hero: 34,
   display: 30,

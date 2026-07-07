@@ -92,11 +92,7 @@ const Index = () => {
   showsVerticalScrollIndicator={false}
  renderItem={({ item }) => (
   <ListViwe
-    imageurl={item.imageurl}
-    tagLabel={item.tagLabel}
-    title={item.title}
-    postedtime={item.postedtime}
-    readtime={item.readtime}
+    item={item}
   />
 )}
 />

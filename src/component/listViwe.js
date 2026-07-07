@@ -1,57 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
 import useTheme from "../store/useTheam";
 import Tag from "./tag";
 import Caption from "./caption";
 import { getItem } from "../utils/storage";
 import useBookmark from "../store/usebookmark";
 
-const ListViwe = ({
-  imageurl,
-  tagLabel,
-  title,
-  postedtime,
-  readtime,
-  colorts,
-}) => {
+const ListViwe = ({item}) => {
   const { color, fsize, spacing } = useTheme();
-
   const { addBookmark, removeBookmark } = useBookmark();
-
+const bookmarks=[]
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
-  const checkBookmarkStatus = async () => {
-    try {
-      const bookmarks = (await getItem("bookmarks")) || [];
 
-      const bookmarked = bookmarks.some(
-        (item) => item.title === title 
+  const checkBookmarkStatus = async () => {
+
+    try {
+
+      const storedBookmarks = await getItem("bookmarks");
+
+      const bookmarkList = storedBookmarks
+        ? JSON.parse(storedBookmarks)
+        : [];
+
+      const bookmarked = bookmarkList.some(
+        (bookmark) => bookmark.title === item.title
       );
 
       setIsbookmark(bookmarked);
-    } catch (error) {
-      console.log(error);
+
+      
+
+    } catch(error) {
+
+      console.log("Bookmark load error:", error);
+
     }
+
   };
 
+
   checkBookmarkStatus();
-}, [title]);
+
+}, [item]);
 
   const handleBookmark = async () => {
     try {
       if (isBookmark) {
-        await removeBookmark(title);
+        await removeBookmark(item);
         setIsbookmark(false);
       } else {
-        await addBookmark({
-          title,
-          imageurl,
-          tagLabel,
-          postedtime,
-          readtime,
-        });
+        await addBookmark(item);;
 
         setIsbookmark(true);
       }
@@ -69,15 +71,14 @@ const ListViwe = ({
         },
       ]}
     >
-      <Image
-        source={imageurl}
-        style={styles.image}
-      />
+      <Image source={item.imageurl} style={styles.image} />
 
       <View style={styles.content}>
-       
-<Tag tagLabel={tagLabel} 
- colors={colorts || "transparent"}/>
+        <Tag
+          tagLabel={item.tagLabel}
+          colors={ item.colors || "transparent"}
+        />
+
         <Text
           numberOfLines={2}
           style={[
@@ -88,12 +89,12 @@ const ListViwe = ({
             },
           ]}
         >
-          {title}
+          {item.title}
         </Text>
 
         <Caption
-          postedtime={postedtime}
-          readtime={readtime}
+          postedtime={item.postedtime}
+          readtime={item.readtime}
         />
       </View>
 
@@ -107,6 +108,8 @@ const ListViwe = ({
     </View>
   );
 };
+
+export default ListViwe;
 
 const styles = StyleSheet.create({
   container: {
@@ -129,5 +132,3 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
 });
- 
-export default ListViwe;   

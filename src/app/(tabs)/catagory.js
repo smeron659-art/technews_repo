@@ -18,7 +18,7 @@ const Catagory = () => {
   justifyContent:'center',  fontFamily:'Syne_600SemiBold', fontSize:fsize.title}} >Explor  the all  thing  </Text>
    <Search value={catagorysearch}  onChangeText={setCatagorysearch} placeholder="Catagor search ...."/>
      <FlatList
-  data={Categories}
+  data={Categories.splice(1)}
   keyExtractor={(item) => item.id.toString()}
   numColumns={2}
   showsVerticalScrollIndicator={false}
@@ -38,7 +38,7 @@ const Catagory = () => {
     {
       width: "48%",
       backgroundColor: color.surface,
-      borderRadius: 18,
+      borderRadius: 10,
       padding: 16,
 
       borderWidth: 1,
