@@ -3,32 +3,59 @@ import { setItem, getItem } from "../utils/storage";
 
 const useBookmark = create((set, get) => ({
   bookmarks: [],
-setBookmark:(bookmarks)=>set({bookmarks:bookmarks}),
+
+  setBookmark: (bookmarks) => set({ bookmarks }),
+
   loadBookmarks: async () => {
-    const data = await getItem("bookmarks");
-    set({ bookmarks: data || [] });
+    try {
+      const data = await getItem("bookmarks");
+
+      set({
+        bookmarks: Array.isArray(data) ? data : [],
+      });
+
+    } catch (error) {
+      console.log("Load bookmark error:", error);
+      set({ bookmarks: [] });
+    }
   },
 
   addBookmark: async (item) => {
-    const current = get().bookmarks;
+    try {
+      const current = get().booksmarks || [];
 
-    const exists = current.some((b) => b.title === item.title);
+      const exists = current.some(
+        (b) => b.title === item.title
+      );
 
-    if (!exists) {
-      const updated = [...current, item];
+      if (!exists) {
+        const updated = [...current, item];
 
-      set({ bookmarks: updated });
-      await setItem("bookmarks", updated);
+        set({ bookmarks: updated });
+
+        await setItem("bookmarks", updated);
+      }
+
+    } catch (error) {
+      console.log("Add bookmark error:", error);
     }
   },
 
   removeBookmark: async (title) => {
-    const updated = get().bookmarks.filter(
-      (b) => b.title !== title
-    );
+    try {
+      const current = get().bookmarks || [];
 
-    set({ bookmarks: updated });
-    await setItem("bookmarks", updated);
+      const updated = current.filter(
+        (b) => b.title !== title
+      );
+
+      set({ bookmarks: updated });
+
+      await setItem("bookmarks", updated);
+
+    } catch (error) {
+      console.log("Remove bookmark error:", error);
+    }
   },
 }));
 

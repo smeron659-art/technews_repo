@@ -11,7 +11,7 @@ import useBookmark from "../store/usebookmark";
 const ListViwe = ({item}) => {
   const { color, fsize, spacing } = useTheme();
   const { addBookmark, removeBookmark } = useBookmark();
-const bookmarks=[]
+
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const bookmarks=[]
         (bookmark) => bookmark.title === item.title
       );
 
-      setIsbookmark(bookmarked);
+       (bookmarked);
 
       
 

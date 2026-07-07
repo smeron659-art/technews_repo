@@ -165,18 +165,18 @@ const Favorite = () => {
             data={bookmarks}
 
 
-            keyExtractor={(item)=>item.id}
+            keyExtractor={(item)=>item.title}
 
 
             renderItem={({item})=>(
 
-
+<View style={{paddingHorizontal:spacing.l}}>
               <ListViwe
 
                 item={item}
 
               />
-
+</View>
 
             )}
 
