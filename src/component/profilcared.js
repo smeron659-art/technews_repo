@@ -13,7 +13,7 @@ const Profilcared = () => {
     height: 80,
     borderRadius: 35,
   }}
-/>
+/>  
          <View style={{padding:spacing.ml ,marginLeft:14, }} >
             <Text style={{color:color.surface ,fontSize:fsize.titleSmall,marginBottom:6}}>
               Abebe Kebede
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 
 
     }
-
 })
 
 export default Profilcared;

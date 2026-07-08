@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../component/header";
 import { Ionicons } from "@expo/vector-icons";
 import Profilcared from "../../component/profilcared";
+import Statescared from"../../component/statescared"
 const Profile = () => {
   const { themeMode, toggleTheme, color, fsize, spacing } = useTheme();
 
@@ -22,9 +23,14 @@ const Profile = () => {
 </View>
 
 </View>
-<Profilcared/>      
+<Profilcared/>   
+<View style={{ flexDirection:'row',justifyContent:'space-between', marginTop:29}}>
+<Statescared number={"126"} style={"seved"}/>
+  <Statescared number={"60"} style={"read"}/>
+  <Statescared number={"20"} style={"play"}/>
+  </View>   
     </SafeAreaView>
-  );
+  ); 
 };
 
 const createStyles = (color, fsize, spacing) =>
