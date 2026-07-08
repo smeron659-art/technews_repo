@@ -7,7 +7,7 @@
   background: '#252424',
   surface: '#f2e9e9',
   card: '#FFFFFF',
-lowerback:"#0f0101",
+lowerback:"#1a17173d",
  overlayLight: "rgba(78, 68, 68, 0.05)",
   // Primary colors
   primary: "#093cd5",
@@ -47,7 +47,7 @@ surfaceSecondary: "#1E1E1E",
     background: "#ececec",
   surface: "#040303", 
   card: "#1E1E1E",
-  lowerback:"#f1f1f1",
+  lowerback:"#e9e3e3",
   surfaceSecondary: "#F5F5F5" ,
   overlayLight: "rgba(97, 76, 76, 0.1)",
 

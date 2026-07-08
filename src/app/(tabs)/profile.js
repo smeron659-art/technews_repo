@@ -3,6 +3,7 @@ import useTheme from "../../store/useTheam";
 import { StyleSheet, View, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../component/header";
+import { Ionicons } from "@expo/vector-icons";
 
 const Profile = () => {
   const { themeMode, toggleTheme, color, fsize, spacing } = useTheme();
@@ -13,9 +14,14 @@ const Profile = () => {
 
   return (
     <SafeAreaView style={style.container}>
-      <Header header={"profile"} />
 
-      <Button title="Change Theme" onPress={toggleTheme} />
+    <View style={{ justifyContent:"space-between" ,flexDirection:'row'}}>
+      <Header header={"profile"} />
+      <View style={{backgroundColor:color.lowerback, padding:spacing.md, alignItems:'center' ,height:50,width:50,borderRadius:10}}>
+      <Ionicons name="settings-outline" size={23} color={color.textPrimary} />
+</View>
+</View>
+      
     </SafeAreaView>
   );
 };
@@ -23,9 +29,9 @@ const Profile = () => {
 const createStyles = (color, fsize, spacing) =>
   StyleSheet.create({
     container: {
-      flex: 1, // ✅ makes background full screen
-      padding: 20,
+      flex: 1,
       backgroundColor: color.background,
+      padding:spacing.l
     },
     textcolor: {
       color: color.textPrimary,

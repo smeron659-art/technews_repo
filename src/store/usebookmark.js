@@ -22,7 +22,7 @@ const useBookmark = create((set, get) => ({
 
   addBookmark: async (item) => {
     try {
-      const current = get().booksmarks || [];
+      const current = get().bookmarks || [];
 
       const exists = current.some(
         (b) => b.title === item.title
