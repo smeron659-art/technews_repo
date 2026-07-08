@@ -47,7 +47,7 @@ surfaceSecondary: "#1E1E1E",
     background: "#ececec",
   surface: "#040303", 
   card: "#1E1E1E",
-  lowerback:"#e9e3e3",
+  lowerback:"#dfdada",
   surfaceSecondary: "#F5F5F5" ,
   overlayLight: "rgba(97, 76, 76, 0.1)",
 
