@@ -1,40 +1,46 @@
 import React from 'react';
-import { StyleSheet, View,Image } from 'react-native';
+import { StyleSheet, View,Image,Text } from 'react-native';
 import useTheme from '../store/useTheam';
 
 const Profilcared = () => {
     const {color,spacing,fsize}=useTheme();
     return (
-        <View styles={[styles.contener, { padding:spacing.l, BackgroundColor: color.lowerback} ]}>
+        <View style={[styles.contener, {backgroundColor: color.lowerback  , height:100}  ]}>
          <Image
   source={require("../../assets/heritage.jpg")}
   style={{
     width: 80,
     height: 80,
-    borderRadius: 40,
+    borderRadius: 35,
   }}
 />
-         <view >
-            <Text>
+         <View style={{padding:spacing.ml ,marginLeft:14, }} >
+            <Text style={{color:color.surface ,fontSize:fsize.titleSmall,marginBottom:6}}>
               Abebe Kebede
-            </Text>
-            <Text>
+            </Text >
+            <Text style={{color:color.surface ,marginBottom:6}}>
      AbebeKebede@gmail.com
             </Text>
-            <View style={{BackgroundColor:color.primary}}>
-            <Text>
+
+            <View style={{backgroundColor:color.rprimary ,height:'20',width:'100',borderRadius:40}}>
+            <Text style={{color:color.primary, alignItems:'center', justifyContent:'center', marginLeft:12}}>
           prom
             </Text>
             </View>
-            </view>  
+            </View>  
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     contener:{
-        justifyContent:'flex-start',
-        flexDirection:'row'
+        alignItems:'center',
+    flexDirection:'row',
+    justifyContent:'flex-start',
+    padding :10,
+    width:'100%',
+    borderRadius:13,
+
 
     }
 

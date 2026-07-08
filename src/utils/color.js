@@ -11,6 +11,7 @@ lowerback:"#1a17173d",
  overlayLight: "rgba(78, 68, 68, 0.05)",
   // Primary colors
   primary: "#093cd5",
+   rprimary: "#0d215ba4",
   primaryLight: "#9D46FF",
   secondary: "#03DAC6",
 surfaceSecondary: "#1E1E1E",
@@ -53,6 +54,7 @@ surfaceSecondary: "#1E1E1E",
 
   // Primary colors
   primary: "#062b81",
+   rprimary: "#2762ea80",
   primaryLight: "#CF9FFF",
   secondary: "#03DAC6",
 
