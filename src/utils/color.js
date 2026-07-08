@@ -7,6 +7,7 @@
   background: '#252424',
   surface: '#f2e9e9',
   card: '#FFFFFF',
+   surfaceBg: "#2A2520",
 lowerback:"#1a17173d",
  overlayLight: "rgba(78, 68, 68, 0.05)",
   // Primary colors
@@ -47,6 +48,7 @@ surfaceSecondary: "#1E1E1E",
    export   const lightTheme={
     background: "#ececec",
   surface: "#040303", 
+   surfaceBg: "#FAF7F2",
   card: "#1E1E1E",
   lowerback:"#dfdada",
   surfaceSecondary: "#F5F5F5" ,

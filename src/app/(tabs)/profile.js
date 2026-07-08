@@ -1,11 +1,14 @@
 import React from "react";
 import useTheme from "../../store/useTheam";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button,Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../component/header";
 import { Ionicons } from "@expo/vector-icons";
 import Profilcared from "../../component/profilcared";
 import Statescared from"../../component/statescared"
+
+import { Pre } from "../../data/preference";
+import Profilelist from "../../component/profilelist"
 const Profile = () => {
   const { themeMode, toggleTheme, color, fsize, spacing } = useTheme();
 
@@ -29,6 +32,10 @@ const Profile = () => {
   <Statescared number={"60"} style={"read"}/>
   <Statescared number={"20"} style={"play"}/>
   </View>   
+  <View style={{marginTop:20,marginBottom:15, justifyContent:'flex-start'}}>
+    <Text style={{  color:color.textPrimary, FontSizes:fsize.title,}}> Preference</Text>
+  </View>
+<Profilelist preference={ Pre}/>
     </SafeAreaView>
   ); 
 };
