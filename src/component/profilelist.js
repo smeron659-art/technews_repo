@@ -3,15 +3,19 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import useTheme from '../store/useTheam';
 import Iconlist from './iconlist';
 
+
 const Profilelist = ({ preference }) => {
     const { color, fsize, spacing } = useTheme();
 
     return (
+
+  
         <View
             style={{
                 backgroundColor: color.surfaceBg,
                 borderTopLeftRadius: 10,
                 borderTopRightRadius: 10,
+                flex :1
             }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 {preference.map((item, index) => (
@@ -58,6 +62,7 @@ const Profilelist = ({ preference }) => {
                 ))}
             </ScrollView>
         </View>
+  
     );
 };
 
