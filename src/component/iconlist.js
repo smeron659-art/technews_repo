@@ -8,7 +8,7 @@ const Iconlist = ({name}) => {
   const styles = createStyles(color,  spacing,fsize,);
     return (
         <View style={styles.contener}>
-           <Ionicons name={name} size={22}
+           <Ionicons name={name} size={24}
                 color={color.textPrimary} /> 
         </View>
     );
@@ -16,8 +16,8 @@ const Iconlist = ({name}) => {
 
 const createStyles=(color,spacing,fsize) => StyleSheet.create({
     contener:{
-width:30,
-height:30,
+width:40,
+height:40,
 backgroundColor:color.surfaceSecondary,
 alignSelf:'flex-end', 
 justifyContent:'center',

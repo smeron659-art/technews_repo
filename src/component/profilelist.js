@@ -37,10 +37,10 @@ const Profilelist = ({ preference }) => {
                                 
                             />
 
-                            <View style={{ marginLeft: spacing.m }}>
+                            <View style={{ marginLeft: spacing.l }}>
                                 <Text
                                     style={{
-                                        color: color.textPrimery,
+                                        color: color.textSecondary,
                                         fontSize: fsize.title,
                                     }}>
                                     {item.Label}
