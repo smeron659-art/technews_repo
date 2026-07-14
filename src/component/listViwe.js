@@ -22,15 +22,14 @@ const ListViwe = ({item}) => {
 
       const storedBookmarks = await getItem("bookmarks");
 
-      const bookmarkList = storedBookmarks
-        ? JSON.parse(storedBookmarks)
+      const bookmarkList = Array.isArray(storedBookmarks)?storedBookmarks
         : [];
-
+ 
       const bookmarked = bookmarkList.some(
         (bookmark) => bookmark.title === item.title
       );
 
-       (bookmarked);
+     setIsbookmark(bookmarked);
 
       
 

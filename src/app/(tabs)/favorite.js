@@ -56,35 +56,22 @@ const Favorite = () => {
           await getItem("bookmarks");
 
 
+ const validBookmark= Array.isArray(storedBookmark)?storedBookmark:[];
 
-        const parseBookmark =
-          storedBookmark
-          ? JSON.parse(storedBookmark)
-          : [];
+setBookmarks(validBookmark)
+      }
+      catch(error) {
 
-
-
-        setBookmarks(parseBookmark);
-
-
-
-        console.log(
-          "Saved bookmarks:",
-          parseBookmark
-        );
-
-
-
-      } catch(error) {
-
-
-        console.log(
-          "Load bookmark error:",
-          error
-        );
-
+      console.log(
+        "Load bookmark error:",
+        error
+      );
 
       }
+
+
+
+      
 
 
     };
@@ -110,7 +97,7 @@ const Favorite = () => {
         style={styles.textcolor}
         header="Saved"
       />
-
+ 
       <Text
         style={{
           color: color.textPrimary,
