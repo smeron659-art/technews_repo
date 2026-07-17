@@ -49,7 +49,7 @@ const ListViwe = ({item}) => {
   const handleBookmark = async () => {
     try {
       if (isBookmark) {
-        await removeBookmark(item);
+        await removeBookmark(item.title);
         setIsbookmark(false);
       } else {
         await addBookmark(item);;
@@ -86,7 +86,7 @@ const ListViwe = ({item}) => {
               color: color.textPrimary,
               fontSize: fsize.body,
             },
-          ]}
+          ]} 
         >
           {item.title}
         </Text>

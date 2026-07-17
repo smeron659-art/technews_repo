@@ -4,7 +4,7 @@ import {
   View,
   Text,
   FlatList,
-  
+
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useTheme from "../../store/useTheam";
@@ -14,7 +14,6 @@ import Header from "../../component/header";
 
 import { getItem } from "../../utils/storage";
 import useBookmark from "../../store/usebookmark";
-
 
 const Favorite = () => {
 
@@ -31,8 +30,6 @@ const Favorite = () => {
     bookmarks,
     setBookmarks
   } = useBookmark();
-
-
 
   const styles = createStyles(
     color,
@@ -94,7 +91,7 @@ setBookmarks(validBookmark)
 
 
       <Header
-        style={styles.textcolor}
+        style={styles.textcolor}  
         header="Saved"
       />
  
@@ -114,7 +111,7 @@ setBookmarks(validBookmark)
 
 
 
-
+ 
 
 
       {
@@ -164,7 +161,6 @@ setBookmarks(validBookmark)
 
               />
 </View>
-
             )}
 
           />
@@ -218,4 +214,4 @@ const createStyles = (
   },
 
 
-});
+});    
