@@ -72,7 +72,7 @@ const ListViwe = ({item}) => {
 
       <View style={styles.content}>
         <Tag
-          tagLabel={item.tagLabel}
+          catagoryName={item.catagoryName}
           colors={ item.colors || "transparent"}
         />
 

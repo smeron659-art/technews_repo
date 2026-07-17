@@ -37,7 +37,7 @@ const Card = () => {
           ]}
           style={[styles.gradient, { padding: spacing.l }]}
         >
-          <Tag tagLabel="LIVE" />
+          <Tag catagoryName="LIVE" />
 
           <View style={styles.content}>
             <HeroTitle title="OpenAI Universal GPT-5" />
