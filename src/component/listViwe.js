@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
 import useTheme from "../store/useTheam";
 import Tag from "./tag";
 import Caption from "./caption";
@@ -41,7 +40,6 @@ const ListViwe = ({item}) => {
 
   };
 
-
   checkBookmarkStatus();
 
 }, [item]);
@@ -64,7 +62,7 @@ const ListViwe = ({item}) => {
   return (
     <View
       style={[
-        styles.container,
+        styles.container, 
         {
           paddingVertical: spacing.sm,
         },
@@ -87,7 +85,7 @@ const ListViwe = ({item}) => {
               fontSize: fsize.body,
             },
           ]} 
-        >
+        >  
           {item.title}
         </Text>
 
@@ -95,7 +93,7 @@ const ListViwe = ({item}) => {
           postedtime={item.postedtime}
           readtime={item.readtime}
         />
-      </View>
+      </View> 
 
       <Pressable onPress={handleBookmark}>
         <Ionicons
@@ -106,7 +104,7 @@ const ListViwe = ({item}) => {
       </Pressable>
     </View>
   );
-};
+}; 
 
 export default ListViwe;
 
@@ -130,4 +128,4 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 6,
   },
-});
+});    

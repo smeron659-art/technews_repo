@@ -2,7 +2,7 @@ const DATA = [
   {
     id: '1',
     title: ' the ethiopa calteral  place   that is the  hertage place  that is   found in the ethiopa in the culaterl placse ',
-  tagLabel:' the etopy',
+  tagLabel:'  ethipoa',
 postedtime  :'3 hour',
  readtime :'5 houre',
  imageurl: require('../../assets/heritage.jpg')
@@ -10,7 +10,7 @@ postedtime  :'3 hour',
    {
     id: '2',
     title: ' the second ',
-  tagLabel:' the ethio',
+  tagLabel:' good ',
 postedtime  :'3 houre',
  readtime :'5 houre',
 imageurl: require('../../assets/heritage.jpg')
@@ -18,13 +18,13 @@ imageurl: require('../../assets/heritage.jpg')
    {
    id: '3',
     title: 'First Item',
-  tagLabel:' the ethiy',
+  tagLabel:' cultural',
 postedtime  :'3 houre',
  readtime :'5 houre',
  imageurl: require('../../assets/heritage.jpg')
 },{
     id: '4',
-    title: 'for',
+    title: 'next iteam',
   tagLabel:' the ethiopy',
 postedtime  :'3 houre',
  readtime :'5 hore',

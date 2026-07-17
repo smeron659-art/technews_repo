@@ -47,7 +47,7 @@ const CategoryCard = ({
       <Text
         style={{
           fontSize: fsize.body,
-          color: color.textPrimary,
+          color: color.background,
           marginTop: spacing.l,
         }}
       >
@@ -57,7 +57,7 @@ const CategoryCard = ({
       <Text
         style={{
           fontSize: fsize.caption,
-          color: color.textSecondary,
+          color: color.background,
           marginTop: spacing.s,
         }}
       >
