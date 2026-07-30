@@ -4,7 +4,8 @@ import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { Stack } from 'expo-router';
 import { getItem} from "../utils/storage";
 import { useEffect } from "react";
-import useTheam from "../../store/useTheam";
+import useTheme from "../store/useTheam";
+
 import {
   useFonts,
   Syne_400Regular,
@@ -14,6 +15,7 @@ import {
   Syne_800ExtraBold,
 } from '@expo-google-fonts/syne';
 const Layout = () => {
+    const {setTheme}=useTheme();
     const [fontLoaded]=useFonts({
          Syne_400Regular,
   Syne_500Medium,
@@ -24,7 +26,9 @@ const Layout = () => {
  const convex = new ConvexReactClient(
   process.env.EXPO_PUBLIC_CONVEX_URL
 );
-const{setTheme}=useTheam();
+
+
+
     useEffect(() => {
       const loadTheme = async () => {
         const storedTheme = await getItem("themeMode");

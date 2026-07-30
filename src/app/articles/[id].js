@@ -54,7 +54,7 @@ image:{
     padding:20,
 },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "700",
     color: "#1A1A1A",
     marginBottom: 10,
