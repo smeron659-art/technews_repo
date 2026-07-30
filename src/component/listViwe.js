@@ -6,7 +6,7 @@ import Tag from "./tag";
 import Caption from "./caption";
 import { getItem } from "../utils/storage";
 import useBookmark from "../store/usebookmark";
-
+import { router } from "expo-router";
 const ListViwe = ({item}) => {
   const { color, fsize, spacing } = useTheme();
   const { addBookmark, removeBookmark } = useBookmark();
@@ -48,11 +48,10 @@ const ListViwe = ({item}) => {
     try {
       if (isBookmark) {
         await removeBookmark(item._id);
-        setIsbookmark(false);
+       
       } else {
-        await addBookmark(item);;
+        await addBookmark(item);
 
-        setIsbookmark(true);
       }
     } catch (error) {
       console.log("Bookmark Error:", error);
@@ -68,6 +67,7 @@ const ListViwe = ({item}) => {
         },
       ]}
     >
+      <Pressable onPress={()=>router.push('/articles/${item._id}')}>
       <Image
   source={
     item.ImageUrl === "heritage.jpg"
@@ -76,6 +76,8 @@ const ListViwe = ({item}) => {
   }
   style={styles.image}
 />
+
+</Pressable>
       <View style={styles.content}>
         <Tag
           catagoryName={item.catagoryName}

@@ -1,34 +1,14 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SystemBars } from "react-native-edge-to-edge";
-import useTheam from "../../store/useTheam";import {
-  useFonts,
-  Syne_400Regular,
-  Syne_500Medium,
-  Syne_600SemiBold,
-  Syne_700Bold,
-  Syne_800ExtraBold,
-} from '@expo-google-fonts/syne';
-import { useEffect } from "react";
-import { getItem } from "../../utils/storage";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import useTheam from "../../store/useTheam";
 
-const convex = new ConvexReactClient("process.env.EXPO_PUBLIC_CONVEX_URL");
-export default function Layout() {
+
+export default function TabLayout() {
   const { color,setTheme } = useTheam();
-    useEffect(() => {
-  const loadTheme = async () => {
-    const storedTheme = await getItem("themeMode");
-
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  };
-
-  loadTheme();
-}, []);
+   
   return (
-    < ConvexProvider client={convex}>
+   <>
       <SystemBars style="auto" />
  
       <Tabs
@@ -83,6 +63,6 @@ export default function Layout() {
           }}
         />
       </Tabs>
-    </ConvexProvider>
+  </>
   );
 } 

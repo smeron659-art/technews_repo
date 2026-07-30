@@ -10,7 +10,8 @@ import { useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
      
 const Catagory = () => {
-  const catagories=useQuery(api.catagories.getCatagories)
+  const catagories=useQuery(api.catagories.getCatagories);
+  const cat=catagories?.slice(1)
     const {color,fsize, spacing}=useTheme();
     const [catagorysearch,setCatagorysearch]=useState([]);
        const  styles=createStyles(color,fsize, spacing)
@@ -39,7 +40,7 @@ const Catagory = () => {
   justifyContent:'center',  fontFamily:'Syne_600SemiBold', fontSize:fsize.title}} >Explor  the all  thing  </Text>
    <Search value={catagorysearch}  onChangeText={setCatagorysearch} placeholder="Catagor search ...."/>
      <FlatList
-  data={catagories}
+  data={cat}
  keyExtractor={(item) => item._id.toString()}
   numColumns={2}
   showsVerticalScrollIndicator={false}
