@@ -25,7 +25,7 @@ const useBookmark = create((set, get) => ({
       const current = get().bookmarks || [];
 
       const exists = current.some(
-        (b) => b.title === item.title
+        (b) => b._id === item._id
       );
 
       if (!exists) {
@@ -41,12 +41,12 @@ const useBookmark = create((set, get) => ({
     }
   },
 
-  removeBookmark: async (title) => {
+  removeBookmark: async (id) => {
     try {
       const current = get().bookmarks || [];
 
       const updated = current.filter(
-        (b) => b.title !== title
+        (b) => b._id !== id
       );
 
       set({ bookmarks: updated });

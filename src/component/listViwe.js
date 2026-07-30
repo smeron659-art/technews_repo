@@ -25,8 +25,9 @@ const ListViwe = ({item}) => {
         : [];
  
       const bookmarked = bookmarkList.some(
-        (bookmark) => bookmark.title === item.title
-      );
+  (bookmark) => bookmark._id === item._id
+);
+      
 
      setIsbookmark(bookmarked);
 
@@ -48,10 +49,10 @@ const ListViwe = ({item}) => {
     try {
       if (isBookmark) {
         await removeBookmark(item._id);
-       
+         setIsbookmark(false);
       } else {
         await addBookmark(item);
-
+  setIsbookmark(true);
       }
     } catch (error) {
       console.log("Bookmark Error:", error);
@@ -67,12 +68,10 @@ const ListViwe = ({item}) => {
         },
       ]}
     >
-      <Pressable onPress={()=>router.push('/articles/${item._id}')}>
+      <Pressable onPress={() => router.push(`/articles/${item._id}`)}>
       <Image
   source={
-    item.ImageUrl === "heritage.jpg"
-      ? require("../../assets/heritage.jpg")
-      : require("../../assets/default.png")
+    item.ImageUrl 
   }
   style={styles.image}
 />
