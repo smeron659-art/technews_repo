@@ -5,11 +5,32 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../../component/header';
 import Search from '../../component/search'
 import CategoryCard from '../../component/catagorycard';
-import { Categories } from '../../data/catagori';
+
+import { useQuery } from 'convex/react';
+import { api } from '../../../convex/_generated/api';
+     
 const Catagory = () => {
+  const catagories=useQuery(api.catagories.getCatagories)
     const {color,fsize, spacing}=useTheme();
     const [catagorysearch,setCatagorysearch]=useState([]);
        const  styles=createStyles(color,fsize, spacing)
+
+
+       if(!catagories)
+       return (
+           <SafeAreaView>
+       
+             <View
+               style={{
+                 flexDirection: "row",
+                 justifyContent: "space-between",
+               }}
+             >
+               <Text>Loading.....</Text>
+             </View>
+             </SafeAreaView>
+             )
+       
     return (
         <SafeAreaView style={styles.colorof}>
         <Header style={styles.color} header={'catagory'}/>
@@ -18,8 +39,8 @@ const Catagory = () => {
   justifyContent:'center',  fontFamily:'Syne_600SemiBold', fontSize:fsize.title}} >Explor  the all  thing  </Text>
    <Search value={catagorysearch}  onChangeText={setCatagorysearch} placeholder="Catagor search ...."/>
      <FlatList
-  data={Categories.slice(1)}
-  keyExtractor={(item) => item.id.toString()}
+  data={catagories}
+ keyExtractor={(item) => item._id.toString()}
   numColumns={2}
   showsVerticalScrollIndicator={false}
   contentContainerStyle={{

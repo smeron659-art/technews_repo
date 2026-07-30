@@ -149,7 +149,7 @@ setBookmarks(validBookmark)
             data={bookmarks}
 
 
-            keyExtractor={(item)=>item.title}
+            keyExtractor={(item)=>item._id}
 
 
             renderItem={({item})=>(

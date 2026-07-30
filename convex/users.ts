@@ -17,7 +17,7 @@ import {v} from "convex/values";
             name:' Abebe kebede',
             email:' AbebeKebede@gmail.com',
             role:"user",
-            ImageUrl: '"https://website.com/image.jpg"'
+            Imageurl: "https://website.com/image.jpg"
         })
         return newUser
     }

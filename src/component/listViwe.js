@@ -47,7 +47,7 @@ const ListViwe = ({item}) => {
   const handleBookmark = async () => {
     try {
       if (isBookmark) {
-        await removeBookmark(item.title);
+        await removeBookmark(item._id);
         setIsbookmark(false);
       } else {
         await addBookmark(item);;
@@ -68,12 +68,18 @@ const ListViwe = ({item}) => {
         },
       ]}
     >
-      <Image source={item.imageurl} style={styles.image} />
-
+      <Image
+  source={
+    item.ImageUrl === "heritage.jpg"
+      ? require("../../assets/heritage.jpg")
+      : require("../../assets/default.png")
+  }
+  style={styles.image}
+/>
       <View style={styles.content}>
         <Tag
           catagoryName={item.catagoryName}
-          colors={ item.colors || "transparent"}
+          
         />
 
         <Text

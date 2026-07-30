@@ -11,6 +11,9 @@ import useTheam from "../../store/useTheam";import {
 } from '@expo-google-fonts/syne';
 import { useEffect } from "react";
 import { getItem } from "../../utils/storage";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+
+const convex = new ConvexReactClient("process.env.EXPO_PUBLIC_CONVEX_URL");
 export default function Layout() {
   const { color,setTheme } = useTheam();
     useEffect(() => {
@@ -25,7 +28,7 @@ export default function Layout() {
   loadTheme();
 }, []);
   return (
-    <>
+    < ConvexProvider client={convex}>
       <SystemBars style="auto" />
  
       <Tabs
@@ -80,6 +83,6 @@ export default function Layout() {
           }}
         />
       </Tabs>
-    </>
+    </ConvexProvider>
   );
 } 

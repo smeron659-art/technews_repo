@@ -10,10 +10,12 @@ import Chips from "../../component/chips";
 import Card from "../../component/card";
 import{ DATA} from "../../data/data";
 import ListViwe from "../../component/listViwe";
-
+import { useQuery
+ } from "convex/react";
+ import {api} from "../../../convex/_generated/api"
 const Index = () => {
   const { color, fsize, spacing ,toggleTheme,themeMode} = useTheme();
-
+const articles = useQuery(api.articles.getAllArticles)
   const styles = createStyles(color, fsize, spacing);
   const [search,setsearch]=useState("")
   const notifications=()=>{
@@ -53,7 +55,24 @@ const Index = () => {
       </Pressable>
     </View>
   );
-}; return (
+};
+
+if(!articles)
+return (
+    <SafeAreaView style={styles.continer}>
+
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Text>Loading.....</Text>
+      </View>
+      </SafeAreaView>
+      )
+
+return (
     <SafeAreaView style={styles.continer}>
       <Date />
       <View
@@ -74,8 +93,8 @@ const Index = () => {
       </View> 
       <FlatList
  
-   data={DATA} 
-   keyExtractor={(item)=>item.id}
+   data={articles} 
+   keyExtractor={(item)=>item._id}
 
   ListHeaderComponent={
     <>
