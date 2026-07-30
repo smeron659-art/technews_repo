@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { Stack } from 'expo-router';
-import { getItem } from "../utils/storage";
+import { getItem} from "../utils/storage";
 import { useEffect } from "react";
+import useTheam from "../../store/useTheam";
 import {
   useFonts,
   Syne_400Regular,
@@ -23,7 +24,7 @@ const Layout = () => {
  const convex = new ConvexReactClient(
   process.env.EXPO_PUBLIC_CONVEX_URL
 );
-
+const{setTheme}=useTheam();
     useEffect(() => {
       const loadTheme = async () => {
         const storedTheme = await getItem("themeMode");

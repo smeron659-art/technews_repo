@@ -70,9 +70,7 @@ const ListViwe = ({item}) => {
     >
       <Pressable onPress={() => router.push(`/articles/${item._id}`)}>
       <Image
-  source={
-    item.ImageUrl 
-  }
+  source={{ uri: item.ImageUrl }}
   style={styles.image}
 />
 

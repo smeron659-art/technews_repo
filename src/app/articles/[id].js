@@ -2,6 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import { useEffect,useState } from "react";
 import { Text,View,Image,Pressable,StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native";
 import { useQuery
  } from "convex/react";
  import { api } from "../../../convex/_generated/api";
@@ -32,8 +33,13 @@ return (
               </View>
            <Text style={styles.title}>{articles.title}</Text>
             <Text style={styles.category} >{articles.catagoryName}</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+  <Text style={styles.content}>
+    {articles.content}
+  </Text>
+</ScrollView>
             
-               <Text style={styles.content}>{articles.content}</Text>
+              
         </SafeAreaView>
     )
 }
@@ -44,7 +50,7 @@ contener:{
 } ,
 image:{
     width:"100%",
-    height:"30%",
+    height:"40%",
     padding:20,
 },
   title: {
@@ -52,6 +58,8 @@ image:{
     fontWeight: "700",
     color: "#1A1A1A",
     marginBottom: 10,
+      paddingHorizontal:20
+    
   },
  category: {
     alignSelf: "flex-start",
@@ -60,16 +68,20 @@ image:{
     paddingVertical: 6,
     borderRadius: 30,
     marginBottom: 15,
+        paddingHorizontal:20
+
   },
 readeandpost:{
  flexDirection:'row',
  justifyContent:'space-around',
- color:'#151618'
+ color:'#151618',
+   
 },
  content: {
     fontSize: 17,
     lineHeight: 30,
     color: "#333",
+    padding:15
   },
 
   })      
