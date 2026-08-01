@@ -21,7 +21,7 @@ const articles = useQuery(api.articles.getAllArticles)
   const notifications=()=>{
     Alert.alert("Notification"," you have no notification");
   }
- 
+  const hederNew = articles?.[0];
  const Listheader = () => {
   return (
     <View
@@ -104,7 +104,7 @@ return (
         placeholder="news, topics, authors..."
       />
       <Chips /> 
-     <Card title={"HeCard"} /> 
+     <Card title={hederNew.title} readtime={hederNew.readtime} image={ {uri: hederNew.ImageUrl} } /> 
      <Listheader/>
     </>
   }

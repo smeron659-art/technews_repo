@@ -9,7 +9,7 @@ import Caption from './caption';
 
 const source = require('../../assets/heritage.jpg');
 
-const Card = () => {
+const Card = ({title,readtime,image}) => {
   const { spacing } = useTheme();
 
   return (
@@ -25,7 +25,7 @@ const Card = () => {
       ]}
     >
       <ImageBackground
-        source={source}
+        source={image}
         style={styles.image}
         imageStyle={{ borderRadius:20 }}
       >
@@ -40,11 +40,11 @@ const Card = () => {
           <Tag catagoryName="LIVE" />
 
           <View style={styles.content}>
-            <HeroTitle title="OpenAI Universal GPT-5" />
+            <HeroTitle title={title} />
 
             <Caption
               author="Maya Chen"
-              readtime="5 min read"
+              readtime={readtime}
             />
           </View>
         </LinearGradient>
