@@ -1,6 +1,5 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
-
 export default defineSchema({
   users: defineTable({
     name: v.string(),
@@ -14,7 +13,6 @@ export default defineSchema({
     content: v.string(),
     catagoryName: v.string(),
     ImageUrl: v.string(),
-    postedtime: v.string(),
     readtime: v.string(),
   }),
   catagories:defineTable({

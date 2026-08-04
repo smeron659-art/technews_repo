@@ -10,7 +10,6 @@ import { router } from "expo-router";
 const ListViwe = ({item}) => {
   const { color, fsize, spacing } = useTheme();
   const { addBookmark, removeBookmark } = useBookmark();
-
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
@@ -95,7 +94,7 @@ const ListViwe = ({item}) => {
         </Text>
 
         <Caption
-          postedtime={item.postedtime}
+          postedtime={ago(item._creationTime)}
           readtime={item.readtime}
         />
       </View> 

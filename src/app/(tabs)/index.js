@@ -16,7 +16,9 @@ import { useQuery
 const Index = () => {
   const { color, fsize, spacing ,toggleTheme,themeMode} = useTheme();
 const articles = useQuery(api.articles.getAllArticles)
+const catagories=useQuery(api.catagories.getCatagories)
   const styles = createStyles(color, fsize, spacing);
+  const {selectedCatagories,setSelectedCatagories}=useState(catagories?.[0]?.categoryName||"");
   const [search,setsearch]=useState("")
   const notifications=()=>{
     Alert.alert("Notification"," you have no notification");
@@ -57,7 +59,7 @@ const articles = useQuery(api.articles.getAllArticles)
   );
 };
 
-if(!articles)
+if(!articles||!catagories)
 return (
     <SafeAreaView style={styles.continer}>
 
@@ -103,7 +105,7 @@ return (
         onChangeText={setsearch}
         placeholder="news, topics, authors..."
       />
-      <Chips /> 
+      <Chips selectcatagory={selectedCatagories} setSelectcatagory={setSelectedCatagories}/> 
      <Card title={hederNew.title} readtime={hederNew.readtime} image={ {uri: hederNew.ImageUrl} } /> 
      <Listheader/>
     </>

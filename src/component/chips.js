@@ -4,7 +4,7 @@ import useTheme from '../store/useTheam';
 import { Categories } from '../data/catagori';
 
 
-const Chips = () => {
+const Chips = ({catagories,selectcatagory,setSelectcatagory}) => {
   const { color, fsize, spacing } = useTheme();
   const [selectcatagory, setSelectcatagory] = useState(Categories[0].categoryName)
 
@@ -16,7 +16,7 @@ const Chips = () => {
     >
       {Categories.map((cat) => (
         <Pressable
-          key={cat.id}
+          key={cat._id}
           onPress={() => setSelectcatagory(cat.categoryName)}
           style={{
             backgroundColor:
