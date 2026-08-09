@@ -1,115 +1,113 @@
-import  { useState } from 'react';
-import { StyleSheet, View,Text,FlatList, Pressable,Alert } from 'react-native';
-import useTheme from '../../store/useTheam';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../../component/header';
-import Search from '../../component/search'
-import CategoryCard from '../../component/catagorycard';
+import React, { useState } from "react";
+import { StyleSheet, Text, FlatList } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useQuery } from "convex/react";
 
-import { useQuery } from 'convex/react';
-import { api } from '../../../convex/_generated/api';
-     
+import useTheme from "../../store/useTheam";
+import Header from "../../component/header";
+import Search from "../../component/search";
+import CategoryCard from "../../component/catagorycard";
+
+import { api } from "../../../convex/_generated/api";
+
 const Catagory = () => {
-  const catagories=useQuery(api.catagories.getCatagories);
-  const cat=catagories?.slice(1)
-    const {color,fsize, spacing}=useTheme();
-    const [catagorysearch,setCatagorysearch]=useState([]);
-       const  styles=createStyles(color,fsize, spacing)
+  const { color, fsize, spacing } = useTheme();
+  const [catagorysearch, setCatagorysearch] = useState("");
+  const catagories = useQuery(api.catagories.getCatagories);
+  const styles = createStyles(color, fsize, spacing);
 
-
-       if(!catagories)
-       return (
-           <SafeAreaView>
-       
-             <View
-               style={{
-                 flexDirection: "row",
-                 justifyContent: "space-between",
-               }}
-             >
-               <Text>Loading.....</Text>
-             </View>
-             </SafeAreaView>
-             )
-       
+  if (catagories === undefined) {
     return (
-        <SafeAreaView style={styles.colorof}>
-        <Header style={styles.color} header={'catagory'}/>
-        <Text style={{color:color.textPrimary,
-  textAlign:'center',
-  justifyContent:'center',  fontFamily:'Syne_600SemiBold', fontSize:fsize.title}} >Explor  the all  thing  </Text>
-   <Search value={catagorysearch}  onChangeText={setCatagorysearch} placeholder="Catagor search ...."/>
-     <FlatList
-  data={cat}
- keyExtractor={(item) => item._id.toString()}
-  numColumns={2}
-  showsVerticalScrollIndicator={false}
-  contentContainerStyle={{
-    padding: spacing.lg,
-    paddingBottom: 30,
-    gap: spacing.lg,
-  }}
-  columnWrapperStyle={{
-    justifyContent: "space-between",
-    marginBottom: spacing.lg,
-  }}
-  renderItem={({ item }) => (
-<Pressable
-  onPress={() => Alert.alert("Notification", "You have no notification")}
-  style={({ pressed }) => [
-    {
-      width: "48%",
-      backgroundColor: color.surface,
-      borderRadius: 10,
-      padding: 16,
-
-      borderWidth: 1,
-      borderColor: "rgba(255,255,255,0.08)",
-
-      elevation: pressed ? 16 : 8,
-
-      shadowColor: "#353131",
-      shadowOffset: {
-        width: 0,
-        height: pressed ? 12 : 8,
-      },
-      shadowOpacity: pressed ? 0.35 : 0.2,
-      shadowRadius: pressed ? 16 : 10,
-
-      transform: [
-        {
-          scale: pressed ? 0.97 : 1,
-        },
-      ],
-    },
-  ]}
->
-  <CategoryCard
-    iconName={item.iconName}
-    iconColor={item.iconColor}
-    iconBackground={item.iconBackground}
-    categoryName={item.categoryName}
-    articleCount={item.articleCount}
-  />
-</Pressable>
-  )}
-/> 
-        </SafeAreaView>
+      <SafeAreaView style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>
+          Loading...
+        </Text>
+      </SafeAreaView>
     );
-}
+  }
+  const categories = catagories.slice(1);
 
-const createStyles= (color,fsize, spacing)=> StyleSheet.create({
-  colorof:{
-    backgroundColor:color.background, 
-    flex:1,
-    padding:spacing.l,
-    paddingVertical:spacing.l,
-    
-  },
-   color:{
-  color:color.textPrimary,
-  textAlign:'center',
-  justifyContent:'center'}
-})
+  const filteredCategories = categories.filter((item) =>
+    item.categoryName
+      ?.toLowerCase()
+      .includes(catagorysearch.toLowerCase())
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Header
+        style={styles.header}
+        header="catagory"
+      />
+
+      <Text style={styles.title}>
+        Explore all the things
+      </Text>
+
+      <Search
+        value={catagorysearch}
+        onChangeText={setCatagorysearch}
+      />
+
+      <FlatList
+        data={filteredCategories}
+        keyExtractor={(item) => item._id}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: spacing.l,
+        }}
+        renderItem={({ item }) => (
+          <CategoryCard item={item} />
+        )}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>
+            No categories found
+          </Text>
+        }
+      />
+    </SafeAreaView>
+  );
+};
+
+const createStyles = (color, fsize, spacing) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: color.background,
+      paddingHorizontal: spacing.l,
+      paddingVertical: spacing.l,
+    },
+
+    header: {
+      color: color.textPrimary,
+    },
+
+    title: {
+      color: color.textPrimary,
+      textAlign: "center",
+      fontFamily: "Syne_600SemiBold",
+      fontSize: fsize.title,
+      marginVertical: spacing.m,
+    },
+
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: color.background,
+    },
+
+    loadingText: {
+      color: color.textPrimary,
+      fontSize: fsize.body,
+    },
+
+    emptyText: {
+      color: color.textPrimary,
+      textAlign: "center",
+      marginTop: spacing.xl,
+      fontSize: fsize.body,
+    },
+  });
 
 export default Catagory;

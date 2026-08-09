@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View, Text } from 'react-native';
-import useTheme from '../store/useTheam';
-import { Categories } from '../data/catagori';
 
+import React from "react";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+} from "react-native";
+import useTheme from "../store/useTheam";
 
-const Chips = ({catagories,selectcatagory,setSelectcatagory}) => {
+const Chips = ({
+  catagories,
+  selectcatagory,
+  setSelectcatagory,
+}) => {
   const { color, fsize, spacing } = useTheme();
-  const [selectcatagory, setSelectcatagory] = useState(Categories[0].categoryName)
 
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={{ margin: spacing.l, flexGrow: 0 }}
+      style={{
+        margin: spacing.l,
+        flexGrow: 0,
+      }}
     >
-      {Categories.map((cat) => (
+      {catagories?.map((cat) => (
         <Pressable
           key={cat._id}
-          onPress={() => setSelectcatagory(cat.categoryName)}
+          onPress={() =>
+            setSelectcatagory(cat.categoryName)
+          }
           style={{
             backgroundColor:
-              selectcatagory === cat.categoryName ? color.primary : color.background,
+              selectcatagory === cat.categoryName
+                ? color.primary
+                : color.background,
             marginRight: spacing.ms,
             paddingVertical: spacing.md,
             paddingHorizontal: spacing.lg,
             borderRadius: spacing.l,
-      
           }}
         >
           <Text
             style={{
-              color: selectcatagory === cat.categoryName ? 'white' : color.textSecondary, fontSize:spacing.lg
+              color:
+                selectcatagory === cat.categoryName
+                  ? "white"
+                  : color.textSecondary,
+              fontSize: spacing.lg,
             }}
           >
             {cat.categoryName}
@@ -42,3 +58,4 @@ const Chips = ({catagories,selectcatagory,setSelectcatagory}) => {
 };
 
 export default Chips;
+

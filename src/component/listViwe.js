@@ -1,57 +1,49 @@
+
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useTheme from "../store/useTheam";
-import Tag from "./tag";
 import Caption from "./caption";
 import { getItem } from "../utils/storage";
 import useBookmark from "../store/usebookmark";
 import { router } from "expo-router";
-const ListViwe = ({item}) => {
+import { ago } from "../utils/ago";
+
+const ListViwe = ({ item }) => {
   const { color, fsize, spacing } = useTheme();
   const { addBookmark, removeBookmark } = useBookmark();
   const [isBookmark, setIsbookmark] = useState(false);
 
   useEffect(() => {
+    const checkBookmarkStatus = async () => {
+      try {
+        const storedBookmarks = await getItem("bookmarks");
 
-  const checkBookmarkStatus = async () => {
+        const bookmarkList = Array.isArray(storedBookmarks)
+          ? storedBookmarks
+          : [];
 
-    try {
+        const bookmarked = bookmarkList.some(
+          (bookmark) => bookmark._id === item._id
+        );
 
-      const storedBookmarks = await getItem("bookmarks");
+        setIsbookmark(bookmarked);
+      } catch (error) {
+        console.log("Bookmark load error:", error);
+      }
+    };
 
-      const bookmarkList = Array.isArray(storedBookmarks)?storedBookmarks
-        : [];
- 
-      const bookmarked = bookmarkList.some(
-  (bookmark) => bookmark._id === item._id
-);
-      
-
-     setIsbookmark(bookmarked);
-
-      
-
-    } catch(error) {
-
-      console.log("Bookmark load error:", error);
-
-    }
-
-  };
-
-  checkBookmarkStatus();
-
-}, [item]);
+    checkBookmarkStatus();
+  }, [item]);
 
   const handleBookmark = async () => {
     try {
       if (isBookmark) {
         await removeBookmark(item._id);
-         setIsbookmark(false);
+        setIsbookmark(false);
       } else {
         await addBookmark(item);
-  setIsbookmark(true);
+        setIsbookmark(true);
       }
     } catch (error) {
       console.log("Bookmark Error:", error);
@@ -61,43 +53,41 @@ const ListViwe = ({item}) => {
   return (
     <View
       style={[
-        styles.container, 
+        styles.container,
         {
           paddingVertical: spacing.sm,
         },
       ]}
     >
-      <Pressable onPress={() => router.push(`/articles/${item._id}`)}>
-      <Image
-  source={{ uri: item.ImageUrl }}
-  style={styles.image}
-/>
-
-</Pressable>
-      <View style={styles.content}>
-        <Tag
-          catagoryName={item.catagoryName}
-          
+      <Pressable
+        style={styles.content}
+        onPress={() => router.push(`/articles/${item._id}`)}
+      >
+        <Image
+          source={{ uri: item.ImageUrl }}
+          style={styles.image}
         />
 
-        <Text
-          numberOfLines={2}
-          style={[
-            styles.title,
-            {
-              color: color.textPrimary,
-              fontSize: fsize.body,
-            },
-          ]} 
-        >  
-          {item.title}
-        </Text>
+        <View style={styles.textContainer}>
+          <Text
+            numberOfLines={2}
+            style={[
+              styles.title,
+              {
+                color: color.textPrimary,
+                fontSize: fsize.body,
+              },
+            ]}
+          >
+            {item.title}
+          </Text>
 
-        <Caption
-          postedtime={ago(item._creationTime)}
-          readtime={item.readtime}
-        />
-      </View> 
+          <Caption
+            postedtime={ago(item._creationTime)}
+            readtime={item.readtime}
+          />
+        </View>
+      </Pressable>
 
       <Pressable onPress={handleBookmark}>
         <Ionicons
@@ -108,7 +98,7 @@ const ListViwe = ({item}) => {
       </Pressable>
     </View>
   );
-}; 
+};
 
 export default ListViwe;
 
@@ -118,13 +108,19 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
 
+  content: {
+    flex: 1,
+    flexDirection: "row",
+    marginRight: 12,
+  },
+
   image: {
     width: 110,
     height: 110,
     borderRadius: 10,
   },
 
-  content: {
+  textContainer: {
     flex: 1,
     marginLeft: 12,
   },
@@ -132,4 +128,5 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 6,
   },
-});    
+});
+

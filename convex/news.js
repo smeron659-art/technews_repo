@@ -61,4 +61,4 @@ const DATA = [
   },
 ];
 
-export { DATA };
+export { DATA }; 

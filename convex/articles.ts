@@ -27,3 +27,12 @@ export const createArticles = mutation({
     return article;
   },
 });
+  export  const getCatagories=query({
+    args :{
+      catagoryName:v.string(),
+    },
+    handler:async   (ctx, args) => {
+       const articles = await ctx.db.query("articles").withIndex("by_catagoryName", (q)=>q.eq("catagoryName",args.catagoryName)).collect();
+       return articles;
+    },
+  })

@@ -21,7 +21,7 @@ const createStyle = (color, fsize,spacing) =>
   StyleSheet.create({
     text: {
       color: color.textSecondary,
-      fontSize: fsize.tag, // ✅ fixed
+      fontSize: fsize.tag, 
       
     },
   });

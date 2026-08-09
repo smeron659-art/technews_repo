@@ -1,20 +1,41 @@
-import React from 'react';
-import { StyleSheet, Pressable, ImageBackground, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from "react";
+import {
+  StyleSheet,
+  Pressable,
+  ImageBackground,
+  View,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-import useTheme from '../store/useTheam';
-import HeroTitle from './heroTitle';
-import Tag from './tag';
-import Caption from './caption';
+import useTheme from "../store/useTheam";
+import HeroTitle from "./heroTitle";
+import Caption from "./caption";
 
-const source = require('../../assets/heritage.jpg');
+const Card = ({ item }) => {
+  const { color, spacing } = useTheme();
 
-const Card = ({title,readtime,image}) => {
-  const { spacing } = useTheme();
+  if (!item) {
+    return (
+      <View
+        style={[
+          styles.card,
+          {
+            borderRadius: spacing.l,
+            backgroundColor: color.surface,
+          },
+        ]}
+      >
+        <HeroTitle
+          title="No articles found"
+          noItemFound={true}
+        />
+      </View>
+    );
+  }
 
   return (
     <Pressable
-      onPress={() => alert('Card pressed')}
+      onPress={() => alert("Card pressed")}
       style={[
         styles.card,
         {
@@ -25,26 +46,35 @@ const Card = ({title,readtime,image}) => {
       ]}
     >
       <ImageBackground
-        source={image}
+        source={
+          item.ImageUrl
+            ? { uri: item.ImageUrl }
+            : require("../../assets/heritage.jpg")
+        }
         style={styles.image}
-        imageStyle={{ borderRadius:20 }}
+        imageStyle={{
+          borderRadius: spacing.l,
+        }}
       >
         <LinearGradient
           colors={[
-            'rgba(0,0,0,0)',
-            'rgba(0,0,0,0.3)',
-            'rgba(0,0,0,0.9)',
+            "rgba(0,0,0,0)",
+            "rgba(0,0,0,0.3)",
+            "rgba(0,0,0,0.9)",
           ]}
-          style={[styles.gradient, { padding: spacing.l }]}
+          style={[
+            styles.gradient,
+            {
+              padding: spacing.l,
+            },
+          ]}
         >
-          <Tag catagoryName="LIVE" />
-
           <View style={styles.content}>
-            <HeroTitle title={title} />
+            <HeroTitle title={item.title} />
 
             <Caption
               author="Maya Chen"
-              readtime={readtime}
+              readtime={item.readtime}
             />
           </View>
         </LinearGradient>
@@ -56,12 +86,12 @@ const Card = ({title,readtime,image}) => {
 const styles = StyleSheet.create({
   card: {
     height: 210,
-    overflow: 'hidden',
-     marginTop:2,
+    overflow: "hidden",
+    marginTop: 2,
 
     elevation: 10,
 
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 8,
@@ -76,7 +106,7 @@ const styles = StyleSheet.create({
 
   gradient: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
 
   content: {

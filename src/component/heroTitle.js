@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-
-const HeroTitle = ({ title }) => {
+import useTheme from '../store/useTheam';
+ const {color,fsize,spacing}=useTheme()
+const HeroTitle = ({ title,noItemFound }) => {
   return (
-    <Text style={styles.title}>
+    <Text style={[styles.title, { color: noItemFound? color.textPrimary: 'white'}]}>
       {title}
     </Text>
   );
@@ -11,7 +12,7 @@ const HeroTitle = ({ title }) => {
 
 const styles = StyleSheet.create({
   title: {
-    color: '#FFFFFF',
+  
     fontSize: 24,
     fontWeight: '700',
     lineHeight: 32,
