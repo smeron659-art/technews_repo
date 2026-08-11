@@ -60,7 +60,7 @@ const Caption = ({ author, readtime,postedtime }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  container: { 
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,

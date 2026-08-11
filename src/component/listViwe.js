@@ -1,6 +1,11 @@
-
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Pressable,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useTheme from "../store/useTheam";
 import Caption from "./caption";
@@ -33,7 +38,9 @@ const ListViwe = ({ item }) => {
       }
     };
 
-    checkBookmarkStatus();
+    if (item) {
+      checkBookmarkStatus();
+    }
   }, [item]);
 
   const handleBookmark = async () => {
@@ -49,6 +56,10 @@ const ListViwe = ({ item }) => {
       console.log("Bookmark Error:", error);
     }
   };
+
+  if (!item) {
+    return null;
+  }
 
   return (
     <View
@@ -91,9 +102,17 @@ const ListViwe = ({ item }) => {
 
       <Pressable onPress={handleBookmark}>
         <Ionicons
-          name={isBookmark ? "bookmark" : "bookmark-outline"}
+          name={
+            isBookmark
+              ? "bookmark"
+              : "bookmark-outline"
+          }
           size={24}
-          color={isBookmark ? "#007AFF" : "#999"}
+          color={
+            isBookmark
+              ? "#007AFF"
+              : "#999"
+          }
         />
       </Pressable>
     </View>
@@ -129,4 +148,3 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
 });
-

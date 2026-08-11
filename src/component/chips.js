@@ -19,7 +19,7 @@ const Chips = ({
       horizontal
       showsHorizontalScrollIndicator={false}
       style={{
-        margin: spacing.l,
+        margin: spacing.lg,
         flexGrow: 0,
       }}
     >
@@ -35,12 +35,12 @@ const Chips = ({
                 ? color.primary
                 : color.background,
             marginRight: spacing.ms,
-            paddingVertical: spacing.md,
-            paddingHorizontal: spacing.lg,
-            borderRadius: spacing.l,
+            paddingVertical: spacing.m,
+            paddingHorizontal: spacing.l,
+            borderRadius: spacing.lg,
           }}
         >
-          <Text
+         <Text
             style={{
               color:
                 selectcatagory === cat.categoryName

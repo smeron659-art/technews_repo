@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import {
   View,
@@ -36,9 +35,9 @@ const Index = () => {
   const styles = createStyles(color, fsize, spacing);
 
   const [search, setSearch] = useState("");
-  const [selectedCatagories, setSelectedCatagories] = useState(
-    catagories?.[0]?.categoryName || ""
-  );
+
+  const [selectedCatagories, setSelectedCatagories] = useState("")
+
   const [newCat, setNewCat] = useState([]);
 
   const allCatagories = {
@@ -63,6 +62,10 @@ const Index = () => {
           (articles) =>
             articles.catagoryName === selectedCatagories
         );
+
+  const searchedArticles = filteredArticles?.filter((article) =>
+    article.title?.toLowerCase().includes(search.toLowerCase())
+  );
 
   const notifications = () => {
     Alert.alert(
@@ -123,7 +126,13 @@ const Index = () => {
             justifyContent: "space-between",
           }}
         >
-          <Text>Loading.....</Text>
+          <Text
+            style={{
+              color: color.textPrimary,
+            }}
+          >
+            Loading.....
+          </Text>
         </View>
       </SafeAreaView>
     );
@@ -137,63 +146,93 @@ const Index = () => {
         paddingHorizontal: spacing.l,
       }}
     >
+         <Date />
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
         }}
       >
+      <Header header={"TechPuls"}/>
         <View style={{ flexDirection: "row" }}>
-          <Icon
-            name={
-              themeMode === "light"
-                ? "moon-outline"
-                : "sunny-outline"
-            }
-            action={toggleTheme}
-          />
-        </View>
+        
+        
+      
 
-        <FlatList
-          data={filteredArticles}
-          keyExtractor={(item) => item._id}
-          ListEmptyComponent={() => (
-            <View
+        <Icon
+          name={
+            themeMode === "light"
+              ? "moon-outline"
+              : "sunny-outline"
+          }
+          action={toggleTheme}
+        />
+         <Icon
+          name={
+            themeMode === "light"
+              ? "moon-outline"
+              : "sunny-outline"
+          }
+          action={toggleTheme}
+        />
+        </View>
+      </View>
+
+     
+
+      <Search
+        search={search}
+        setSearch={setSearch}
+      />
+
+      {newCat.length > 0 && (
+        <Chips
+          catagories={newCat}
+          selectcatagory={selectedCatagories}
+          setSelectcatagory={setSelectedCatagories}
+        />
+      )}
+
+      <FlatList
+        data={searchedArticles}
+        keyExtractor={(item) => item._id}
+        ListEmptyComponent={() => (
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text
               style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
+                color: color.textSecondary,
+                fontSize: fsize.body,
               }}
             >
-              <Text
-                style={{
-                  color: color.textSecondary,
-                  fontSize: fsize.body,
-                }}
-              >
-                No articles found for the selected categories
-              </Text>
-            </View>
-          )}
-          ListHeaderComponent={
-            <>
-              <Listheader />
+              No articles found for the selected catagories
+            </Text>
+          </View>
+        )}
+        ListHeaderComponent={
+          <>
+            
 
-              {newCat.length > 0 && (
-                <Chips
-                  catagories={newCat}
-                  selectcatagory={selectedCatagories}
-                  setSelectcatagory={setSelectedCatagories}
-                />
-              )}
-            </>
-          }
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <Card article={item} />
-          )}
-        />
-      </View>
+            {hederNew && (
+               <Card item={hederNew} />
+              
+            )}
+            <Listheader />
+          </>
+        }
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+           <ListViwe
+                item={item}
+              />
+        
+        )}
+      />
     </SafeAreaView>
   );
 };
@@ -211,4 +250,3 @@ const createStyles = (color, fsize, spacing) =>
   });
 
 export default Index;
-

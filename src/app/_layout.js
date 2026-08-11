@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+
+import { useEffect } from "react";
 import { Stack } from "expo-router";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import {
+  ConvexProvider,
+  ConvexReactClient,
+} from "convex/react";
 import { useFonts } from "@expo-google-fonts/syne";
 
 import {
@@ -48,7 +52,6 @@ const Layout = () => {
   if (!fontLoaded) {
     return null;
   }
-
   return (
     <ConvexProvider client={convex}>
       <Stack
