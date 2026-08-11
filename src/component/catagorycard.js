@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   StyleSheet,
   View,
@@ -37,7 +37,6 @@ const CategoryCard = ({ item }) => {
       ]}
     >
 
-      {/* ICON */}
 
       <View
         style={[
@@ -56,8 +55,6 @@ const CategoryCard = ({ item }) => {
       </View>
 
 
-      {/* CATEGORY NAME */}
-
       <Text
         numberOfLines={1}
         style={[
@@ -72,7 +69,6 @@ const CategoryCard = ({ item }) => {
       </Text>
 
 
-      {/* ARTICLE COUNT */}
 
       <Text
         style={[

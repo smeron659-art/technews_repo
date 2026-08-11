@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import  { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -38,17 +37,12 @@ const Catagory = () => {
     api.catagories.getCatagories
   );
 
-
   const styles = createStyles(
     color,
     fsize,
     spacing
   );
 
-
-  // -----------------------------
-  // LOADING
-  // -----------------------------
 
   if (catagories === undefined) {
 
@@ -67,20 +61,11 @@ const Catagory = () => {
   }
 
 
-  // -----------------------------
-  // REMOVE "ALL"
-  // -----------------------------
-
   const categories =
     catagories.filter(
       (item) =>
         item.categoryName !== "All"
     );
-
-
-  // -----------------------------
-  // SEARCH
-  // -----------------------------
 
   const filteredCategories =
     categories.filter((item) =>
@@ -92,16 +77,12 @@ const Catagory = () => {
     );
 
 
-  // -----------------------------
-  // UI
-  // -----------------------------
+ 
 
   return (
     <SafeAreaView
       style={styles.container}
     >
-
-      {/* HEADER */}
 
       <Header
         style={styles.header}
@@ -109,14 +90,11 @@ const Catagory = () => {
       />
 
 
-      {/* TITLE */}
 
       <Text style={styles.title}>
         Explore all the things
       </Text>
 
-
-      {/* SEARCH */}
 
       <Search
         value={catagorysearch}
@@ -124,7 +102,6 @@ const Catagory = () => {
       />
 
 
-      {/* CATEGORY GRID */}
 
       <FlatList
 
