@@ -35,7 +35,6 @@ const Index = () => {
   const styles = createStyles(color, fsize, spacing);
 
   const [search, setSearch] = useState("");
-
   const [selectedCatagories, setSelectedCatagories] = useState("")
 
   const [newCat, setNewCat] = useState([]);
@@ -44,7 +43,6 @@ const Index = () => {
     _id: "all",
     categoryName: "All",
   };
-
   useEffect(() => {
     if (catagories && catagories.length > 0) {
       setSelectedCatagories("All");
@@ -168,12 +166,7 @@ const Index = () => {
           action={toggleTheme}
         />
          <Icon
-          name={
-            themeMode === "light"
-              ? "moon-outline"
-              : "sunny-outline"
-          }
-          action={toggleTheme}
+          name="notifications-outline"
         />
         </View>
       </View>

@@ -6,7 +6,7 @@
    export   const DarkTheme={
   background: '#252424',
   surface: '#f2e9e9',
-  card: '#FFFFFF',
+  card: '#767171',
    surfaceBg: "#2A2520",
 lowerback:"#1a17173d",
  overlayLight: "rgba(78, 68, 68, 0.05)",

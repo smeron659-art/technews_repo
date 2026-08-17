@@ -9,8 +9,8 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-import useTheme from "../store/useTheam";
 
+import useTheme from "../store/useTheam";
 const CategoryCard = ({ item }) => {
   const { color, fsize } = useTheme();
 
@@ -31,7 +31,7 @@ const CategoryCard = ({ item }) => {
       style={({ pressed }) => [
         styles.card,
         {
-          backgroundColor: color.surface,
+          backgroundColor: color.card,
           opacity: pressed ? 0.8 : 1,
         },
       ]}
@@ -60,7 +60,7 @@ const CategoryCard = ({ item }) => {
         style={[
           styles.categoryName,
           {
-            color: color.textPrimary,
+            color: color.surfaceBg,
             fontSize: fsize.body,
           },
         ]}
@@ -74,12 +74,12 @@ const CategoryCard = ({ item }) => {
         style={[
           styles.articleCount,
           {
-            color: color.textSecondary,
+            color: color.surfaceBg,
             fontSize: fsize.caption,
           },
         ]}
       >
-        {item.articleCount ?? 0} Articles
+        {item.articleCount ?? 0} 
       </Text>
 
     </Pressable>
@@ -90,12 +90,12 @@ const CategoryCard = ({ item }) => {
 const styles = StyleSheet.create({
 
   card: {
-    width: "48%",
-    height: 175,
+    width: "46%",
+    height: 170,
 
     borderRadius: 22,
 
-    padding: 14,
+    padding: 16,
 
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.12,
     shadowRadius: 8,
 
-    elevation: 4,
+    elevation: 5,
   },
 
 
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
 
   categoryName: {
     fontFamily: "Syne_600SemiBold",
+    paddingVertical:12
   },
 
 

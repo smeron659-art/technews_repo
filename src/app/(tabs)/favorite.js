@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
   FlatList,
-
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useTheme from "../../store/useTheam";
@@ -17,19 +16,18 @@ import useBookmark from "../../store/usebookmark";
 
 const Favorite = () => {
 
-
   const {
     color,
     fsize,
     spacing
   } = useTheme();
 
-
-
   const {
     bookmarks,
     setBookmarks
   } = useBookmark();
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const styles = createStyles(
     color,
@@ -37,86 +35,97 @@ const Favorite = () => {
     spacing
   );
 
-
-
-
   useEffect(() => {
-
 
     const loadBookmarks = async () => {
 
-
       try {
-
 
         const storedBookmark =
           await getItem("bookmarks");
 
+        const validBookmark =
+          Array.isArray(storedBookmark)
+            ? storedBookmark
+            : [];
 
- const validBookmark= Array.isArray(storedBookmark)?storedBookmark:[];
+        setBookmarks(validBookmark);
 
-setBookmarks(validBookmark)
+      } catch (error) {
+
+        console.log(
+          "Load bookmark error:",
+          error
+        );
+
       }
-      catch(error) {
-
-      console.log(
-        "Load bookmark error:",
-        error
-      );
-
-      }
-
-
-
-      
-
 
     };
 
-
-
     loadBookmarks();
-
 
   }, []);
 
 
+  const cats = [
+    ...new Set(
+      bookmarks
+        .map((item) => item.catagoryName)
+        .filter(Boolean)
+    )
+  ];
 
 
+  const allcatagory = [
+    {
+      _id: "all",
+      categoryName: "All"
+    },
+
+    ...cats.map((cat) => ({
+      _id: cat,
+      categoryName: cat
+    }))
+  ];
+
+
+  const filteredBookmarks =
+    selectedCategory === "All"
+      ? bookmarks
+      : bookmarks.filter(
+          (item) =>
+            item.catagoryName === selectedCategory
+        );
 
 
   return (
 
     <SafeAreaView style={styles.container}>
 
-
       <Header
-        style={styles.textcolor}  
+        style={styles.textcolor}
         header="Saved"
       />
- 
+
       <Text
         style={{
           color: color.textPrimary,
-          fontSize:fsize.body
+          fontSize: fsize.body
         }}
       >
-
         {bookmarks.length} critical reads saved
-
       </Text>
 
 
-      <Chips />
-
-
-
- 
+      <Chips
+        catagories={allcatagory}
+        selectcatagory={selectedCategory}
+        setSelectcatagory={setSelectedCategory}
+      />
 
 
       {
         bookmarks.length === 0 ? (
-
 
           <View
             style={{
@@ -130,46 +139,39 @@ setBookmarks(validBookmark)
                 fontSize: fsize.body
               }}
             >
-
               Have no saved bookmarks
-
             </Text>
-
 
           </View>
 
-
-
         ) : (
-
-
 
           <FlatList
 
-            data={bookmarks}
+            data={filteredBookmarks}
 
+            keyExtractor={(item) => item._id}
 
-            keyExtractor={(item)=>item._id}
+            renderItem={({ item }) => (
 
+              <View
+                style={{
+                  paddingHorizontal: spacing.l
+                }}
+              >
 
-            renderItem={({item})=>(
+                <ListViwe
+                  item={item}
+                />
 
-<View style={{paddingHorizontal:spacing.l}}>
-              <ListViwe
+              </View>
 
-                item={item}
-
-              />
-</View>
             )}
 
           />
 
-
         )
       }
-
-
 
     </SafeAreaView>
 
@@ -177,41 +179,29 @@ setBookmarks(validBookmark)
 
 };
 
-
-
 export default Favorite;
-
-
-
 
 
 const createStyles = (
   color,
   fsize,
   spacing
-)=> StyleSheet.create({
+) => StyleSheet.create({
 
+  container: {
 
-  container:{
+    backgroundColor: color.background,
 
+    flex: 1,
 
-    backgroundColor:color.background,
-
-    flex:1,
-
-    padding:spacing.l,
-
+    padding: spacing.l,
 
   },
 
+  textcolor: {
 
-  textcolor:{
-
-
-    color:color.textPrimary,
-
+    color: color.textPrimary,
 
   },
 
-
-});    
+});

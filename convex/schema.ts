@@ -14,7 +14,7 @@ export default defineSchema({
     content: v.string(),
     catagoryName: v.string(),
     ImageUrl: v.string(),
-    readtime: v.string(),
+    readtime: v.optional(v.string()),
   }).index("by_catagoryName", ["catagoryName"]),
 
   catagories: defineTable({

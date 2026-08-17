@@ -26,7 +26,6 @@ const Catagory = () => {
     spacing,
   } = useTheme();
 
-
   const [
     catagorysearch,
     setCatagorysearch,
@@ -145,7 +144,6 @@ const Catagory = () => {
   );
 };
 
-
 const createStyles = (
   color,
   fsize,
@@ -161,6 +159,7 @@ const createStyles = (
 
       paddingHorizontal:
         spacing.l,
+        paddingVertical:spacing.l
     },
 
 
@@ -196,7 +195,7 @@ const createStyles = (
         "space-between",
 
       marginBottom:
-        spacing.m,
+        spacing.l,
     },
 
 
@@ -205,7 +204,7 @@ const createStyles = (
         spacing.m,
 
       paddingBottom:
-        spacing.xl,
+        spacing.l,
     },
 
 
@@ -220,6 +219,7 @@ const createStyles = (
 
       backgroundColor:
         color.background,
+        padding:15,
     },
 
 
